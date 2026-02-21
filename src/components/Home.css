@@ -1,0 +1,1667 @@
+/* ===== RESET ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ===== HERO SECTION ===== */
+
+.hero 
+{ width: 99vw; 
+  min-height: 450px; 
+  
+  background-position: center;
+   background-size: cover; 
+   background-repeat: no-repeat; 
+    overflow: hidden;  
+    position: relative; 
+    display: flex;
+     align-items: center;
+      padding: 0 80px;
+}
+
+
+/* Gradient overlay */
+.hero.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(102,33,186,0.7), rgba(255,156,0,0.5));
+  z-index: 1;
+}
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0; /* top:0; right:0; bottom:0; left:0 */
+  background: rgba(178, 102, 255, 0.3); /* light purple with transparency */
+  z-index: 1;
+}
+/* Content */
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 700px;
+}
+
+/* Dark text box */
+.text-box {
+  background: rgba(0, 0, 0, 0.65);
+  padding: 20px;
+  border-radius: 8px;
+  color: white;
+}
+
+.text-box h1 {
+  margin-bottom: 15px;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.text-box p {
+  font-size: 16px;
+  line-height: 1.4;
+}
+
+/* ===== BUTTONS ===== */
+
+.hero-buttons {
+  margin-top: 25px;
+  display: flex;
+  gap: 20px;
+}
+
+.primary-btn {
+  background: #ff9800;
+  border: none;
+  padding: 5px 20px;
+  border-radius: 8px;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s ease;
+ 
+}
+
+.primary-btn:hover {
+  background: #ba802a;
+}
+
+.secondary-btn {
+  background: white;
+  border: 2px solid #ff9800;
+  padding: 5px 25px;
+  border-radius: 8px;
+  font-weight: 200;
+  cursor: pointer;
+  transition: 0.3s ease;
+  
+}
+
+.secondary-btn:hover {
+  
+  color: #ff9800;
+}
+
+/* ===== STATS BAR ===== */
+
+.stats-box {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #007BFF; /* Blue background */
+  color: #fff;
+  padding: 10px 0;
+  border-radius: 10px;
+  margin: -50px auto 0 auto; /* overlap hero */
+  width: 90%;
+  max-width: 900px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+  z-index: 10;
+  position: relative;
+  box-shadow: 0 15px 25px rgba(0,0,0,0.3), 0 5px 10px rgba(0,0,0,0.2);
+}
+
+.stats-box div {
+  text-align: center;
+}
+
+.stats-box div h3 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.stats-box div p {
+  font-size: 1rem;
+  margin: 0;
+}
+
+/* ================= ABOUT SECTION ================= */
+
+.about-section {
+  padding: 0px 80px;
+  
+}
+
+.about-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 70px;
+}
+
+/* LEFT IMAGE SIDE */
+.about-image-wrapper {
+  position: relative;
+  flex: 1;
+}
+
+.about-image {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  border-radius:10px;
+}
+
+/* OVERLAY CARD */
+.overlay-card {
+  position: absolute;
+  bottom: -40px;
+  right: -50px;
+  background: #ffffff;
+  width: 250px;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+  border-left: 6px solid #6c2bd9;
+}
+
+.overlay-card h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.overlay-card p {
+  font-size: 14px;
+  
+  line-height: 1.6;
+}
+
+/* RIGHT CONTENT SIDE */
+.about-content {
+  flex: 1;
+}
+
+.about-content h4 {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: #222;
+}
+
+.about-content p {
+  font-size: 16px;
+  line-height: 1.5;
+
+  margin-bottom: 30px;
+}
+
+/* BUTTON */
+.learn-btn {
+  padding: 8px 30px;
+  border: 1px solid #ff9c00;
+  background: transparent;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 400;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.learn-btn:hover {
+ 
+  color: #ff9c00;
+}
+
+
+@media (max-width: 992px) {
+  .about-container {
+    flex-direction: column;
+  }
+
+  .overlay-card {
+    position: relative;
+    bottom: 0;
+    right: 0;
+    margin-top: 20px;
+  }
+
+  .about-image {
+    height: 300px;
+  }
+}
+
+
+/* why choose us */
+.why-section {
+  padding: 80px 60px;
+  background: #f5f5f5;
+}
+
+.why-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* LEFT SIDE CIRCLE */
+
+.why-left {
+  width: 35%;
+  display: flex;
+  justify-content: center;
+}
+
+.circle {
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  border: 15px solid #6c2bd9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  position: relative;
+}
+
+.circle h2 {
+  font-size: 28px;
+  font-weight: 600;
+}
+
+/* RIGHT SIDE CARDS */
+
+.why-right {
+  width: 55%;
+}
+
+.why-card {
+  display: flex;
+  align-items: center;
+  background: #ffffff;
+  border-radius: 40px;
+  padding: 20px 25px;
+  margin-bottom: 25px;
+  position: relative;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+  transition: all 0.3s ease;
+}
+
+/* Orange Layer Behind */
+.why-card::after {
+  content: "";
+  position: absolute;
+  right: -8px;
+  bottom: -8px;
+  width: 100%;
+  height: 100%;
+  background: #ffa500;
+  border-radius: 40px;
+  z-index: -1;
+  transition: 0.3s ease;
+}
+
+/* HOVER EFFECT (Second Image Style) */
+.why-card:hover {
+  background: #f0f0f0;
+  transform: translateY(-6px);
+}
+
+.why-card:hover::after {
+  background: #ff8c00;
+}
+
+/* ICON */
+
+.icon-box {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: #6c2bd9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 20px;
+}
+
+.icon-box img {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+}
+
+/* TEXT */
+
+.why-text h4 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.why-text p {
+  margin: 5px 0 0;
+  font-size: 14px;
+  color: #555;
+}
+
+/* howItWorks.css */
+
+.how-wrapper {
+  position: relative;
+}
+
+.main-title {
+  text-align: center;
+  font-weight: 700;
+  font-size: 22px;
+}
+
+.sub-title {
+  text-align: center;
+  color: black;
+  margin-bottom: 30px;
+}
+
+.student-img {
+  position: absolute;
+  right: 0;
+  top: -40px;
+  width: 140px;
+}
+.step-card {
+  padding: 20px 20px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+  position: relative;
+  transition: 0.3s;
+  gap: 70px;
+  height: 250px;
+  width: 200px;
+}
+
+.step-card:hover {
+  transform: translateY(-8px);
+}
+
+.step-icon {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+}
+
+.step-number {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background: #6a1b9a;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  margin: 15px auto;
+}
+.flow-path {
+  height: 6px;
+  border-radius: 50px;
+  margin: 30px auto;
+  width: 70%;
+
+  background: linear-gradient(
+    90deg,
+    #ff9f1c,
+    #7b2cbf,
+    #ff9f1c,
+    #7b2cbf,
+    #ff9f1c
+  );
+
+  background-size: 300% 100%;
+  animation: flowMove 5s linear infinite;
+}
+
+@keyframes flowMove {
+  0% {
+    background-position: 0% 0;
+  }
+  100% {
+    background-position: 300% 0;
+  }
+}
+@media (max-width: 992px) {
+  .student-img {
+    position: static;
+    display: block;
+    margin: auto;
+    margin-bottom: 20px;
+  }
+}
+*/
+/* ================= SECTION ================= */
+
+
+:root {
+  --primary: #6621BA;
+  --secondary: #FF9C00;
+  --accent-red: #EF1400;
+  --accent-green: #43A047;
+  --accent-dark: #4A5565;
+  --light-gray: #D9D9D9;
+}
+
+.featured-wrapper {
+  background: #fff;
+}
+
+.featured-title {
+  text-align: center;
+  font-weight: 800;
+  font-size: 24px !important;
+  
+}
+.featured-sub {
+  text-align: center;
+  color: black !important;
+}
+
+
+/* CARD */
+.course-card {
+  border: 3px solid var(--primary);
+  border-radius: 22px;
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 12px 35px rgba(0,0,0,0.1);
+  transition: 0.35s;
+}
+
+.course-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 45px rgba(102,33,186,0.2);
+}
+
+
+/* IMAGE */
+.course-image {
+  width: 100%;
+  height: 150px !important;
+  object-fit: cover;
+}
+
+
+/* BODY */
+.course-body {
+  padding: 25px;
+}
+
+.course-title {
+  color: var(--primary);
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.course-meta {
+  margin-bottom: 15px;
+}
+
+.meta-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 6px;
+  color: black;
+}
+.meta-row i {
+  color: var(--primary);
+}
+
+.course-desc {
+  color:black;
+  margin-bottom: 20px;
+}
+
+
+/* BUTTONS */
+.course-buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+}
+.btn-outline-custom {
+  border: 1px solid var(--secondary);
+  background: white;
+  color: black;
+  padding: 5px 18px;
+  border-radius: 8px;
+  font-weight: 400;
+  width: 48%;
+  
+}
+.btn-outline-custom:hover{
+  color:var(--secondary)!important;
+}
+.btn-primary-custom:hover{
+ background-color: #b17e2c;
+
+}
+.btn-primary-custom {
+  background: var(--secondary);
+  border: none;
+  color: white;
+  padding: 10px 18px;
+  border-radius: 12px;
+  font-weight: 700;
+  width: 48%;
+}
+
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .course-buttons {
+    flex-direction: column;
+  }
+
+  .btn-outline-primary-custom,
+  .btn-primary-custom {
+    width: 100%;
+  }
+}
+
+
+
+
+/* ================== Projects Section ================== */
+/* ================== Projects Section ================== *
+.projects-section {
+  background: linear-gradient(135deg, #6621BA, #7b2bd4) !important;
+  padding: 60px 0;
+  text-align: center;
+  color: white;
+}
+
+.projects-title {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.projects-sub {
+  font-size: 16px;
+  margin-bottom: 40px;
+}
+
+/* ================== Carousel Wrapper ================== *
+.fixed-carousel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 60px;
+}
+
+/* ================== Card Base ================== *
+.carousel-card {
+  position: relative;
+  width: 350px;
+  height: 250px;
+  border-radius: 20px;
+  overflow: hidden;
+  cursor: pointer;
+  background: #fff;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+  transition: transform 0.6s ease, opacity 0.6s ease;
+}
+
+/* ================== Image ================== *
+.carousel-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ================== Center Card ================== *
+.carousel-card.center {
+  transform: scale(1.15);
+  z-index: 5;
+}
+
+/* ================== Left & Right Cards ================== *
+.carousel-card.left,
+.carousel-card.right {
+  transform: scale(0.85);
+  opacity: 0.75;
+}
+
+/* ================== White Bottom Strip ================== *
+.carousel-card.left::after,
+.carousel-card.right::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  background: #ffffff;
+  z-index: 2;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+/* ================== Text ================== *
+.project-info {
+  position: absolute;
+  bottom: 10px;
+  left: 15px;
+  right: 15px;
+  z-index: 3;
+}
+
+/* Left & Right text *
+.carousel-card.left .project-info,
+.carousel-card.right .project-info {
+  color: #222;
+  text-align: left;
+}
+
+/* Center text *
+.carousel-card.center .project-info {
+  color: #222;
+  text-align: center;
+}
+
+/* ================== Typography ================== *
+.project-info h5 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.student-role {
+  font-size: 14px;
+  opacity: 0.9;
+  display: block;
+}
+
+.student-name {
+  font-size: 13px;
+  opacity: 0.85;
+  margin-top: 4px;
+}
+*/
+
+
+/* ================== SECTION ================== */
+/* ================== SECTION ================== */
+.projects-section {
+  background: linear-gradient(135deg, #6621BA, #7b2bd4);
+  padding: 60px 20px;
+  text-align: center;
+  color: #fff;
+}
+
+.projects-title {
+  font-size: 30px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.projects-sub {
+  font-size: 16px;
+  margin-bottom: 50px;
+  opacity: 0.9;
+}
+
+/* ================== CAROUSEL ================== */
+.fixed-carousel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 60px;
+}
+
+/* ================== CARD ================== */
+.carousel-card {
+  position: relative;
+  width: 360px;
+  height: 250px;
+  border-radius: 20px;
+  overflow: hidden;
+  cursor: pointer;
+  background: #fff;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+  transition: all 0.5s ease;
+}
+
+/* IMAGE */
+.carousel-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ================== CENTER ================== */
+.carousel-card.center {
+  transform: scale(1.15);
+  z-index: 5;
+}
+
+/* DARK OVERLAY */
+.carousel-card.center::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.75), transparent);
+}
+
+/* CENTER TEXT */
+.carousel-card.center .project-info {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  right: 20px;
+  color: #fff;
+  z-index: 2;
+  text-align: left;
+}
+
+/* ================== LEFT & RIGHT ================== */
+.carousel-card.left,
+.carousel-card.right {
+  transform: scale(0.85);
+  opacity: 0.8;
+}
+
+/* WHITE PANEL */
+.carousel-card.left::after,
+.carousel-card.right::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 95px;
+  background: #fff;
+  border-radius: 0 0 20px 20px;
+  z-index: 1;
+}
+
+/* TEXT ON WHITE PANEL */
+.carousel-card.left .project-info,
+.carousel-card.right .project-info {
+  position: absolute;
+  bottom: 12px;
+  left: 15px;
+  right: 15px;
+  z-index: 2;
+  color: #222;
+  text-align: left;
+}
+.showcase-btn {
+  position: absolute;
+  
+  
+transform: translateX(-50%);
+  background: #f69d18;
+  color: #fff;
+  border: none;
+  padding: 10px 32px;
+  border-radius: 10px;
+  font-size: 16px;
+  cursor: pointer;
+
+  box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+}
+.showcase-btn:hover{
+  background-color: #ff9800;
+}
+/* ================== TEXT ================== */
+
+/* ROW */
+
+/*success stories
+
+
+
+.story-card {
+  width: 60px;
+  height: 500px;
+  cursor: pointer;
+  transition: transform 0.4s ease;
+}
+
+.story-card:hover {
+  transform: scale(1.05);
+}
+
+.story-card img {
+  height: 450px;
+  object-fit: cover;
+  width: 100%;
+  border-radius: 15px;
+}
+
+.overlay {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 15px;
+  color: white;
+  background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+  border-radius: 0 0 15px 15px;
+}
+.success-slider {
+  overflow-x: hidden; /* Hide overflow for smooth sliding 
+  white-space: nowrap; /* Keep everything on a single line 
+  transition: transform 0.3s ease-in-out;
+}
+
+.success-card {
+  display: inline-block;
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+.success-card img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 10px;
+}
+
+.success-card:hover {
+  transform: scale(1.05);
+}
+
+.success-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(102, 33, 186, 0.8); /* Primary color with transparency 
+  color: #fff;
+  padding: 0.5rem;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  text-align: center;
+}
+
+*/
+
+/* SECTION */
+.success-section {
+  overflow: hidden;
+}
+
+/* OUTER WRAPPER */
+.success-slider-wrapper {
+  overflow: hidden;
+  width: 100%;
+}
+
+/* SLIDER */
+.success-slider {
+  display: flex;
+  gap: 20px;
+  transition: transform 0.5s ease;
+}
+
+/* CARD */
+.success-card {
+  position: relative;
+  min-width: 240px;
+  height: 270px;
+  cursor: pointer;
+  border-radius: 16px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+
+/* IMAGE */
+.success-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* PLAY ICON */
+.play-icon {
+  position: absolute;
+  bottom: 20px;
+  right: 15px;
+  background: #fff;
+  color: #000;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* OVERLAY */
+.success-overlay {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(to top, rgba(193, 161, 232, 0.9), transparent);
+  color: #fff;
+}
+
+.success-overlay h6 {
+  margin: 0;
+  font-size: 15px;
+}
+
+.success-overlay p {
+  margin: 0;
+  font-size: 13px;
+}
+
+@media (max-width: 992px) {
+  .success-card {
+    min-width: 220px;
+    height: 350px;
+  }
+}
+
+@media (max-width: 768px) {
+  .success-card {
+    min-width: 200px;
+    height: 320px;
+  }
+}
+
+@media (max-width: 576px) {
+  .success-card {
+    min-width: 85%;
+    height: 300px;
+  }
+
+  .success-slider {
+    gap: 15px;
+  }
+}
+
+
+
+/* WhyChooseUs.css */
+.why-choose-us {
+  display: flex;
+  align-items: flex-start;
+  gap: 40px;
+  margin: 50px auto;
+  max-width: 1200px;
+}
+
+.why-choose-us-left img {
+  width: 300px;
+  border-radius: 20px;
+  background: #e3d9f8; /* purple background like your image */
+}
+
+.why-choose-us-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.feature-card {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  padding: 15px 20px;
+  border-radius: 15px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+  position: relative;
+}
+
+.feature-card .icon {
+  width: 50px;
+  height: 50px;
+  min-width: 50px;
+  min-height: 50px;
+  border-radius: 50%;
+  background: #6a0dad; /* purple */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 15px;
+}
+
+.feature-card .icon img {
+  width: 24px;
+  height: 24px;
+}
+
+.feature-card .content h4 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.feature-card .content p {
+  margin: 3px 0 0 0;
+  font-size: 0.9rem;
+  color: #333;
+}
+
+/* Hover effect like your second image */
+.feature-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 25px rgba(0,0,0,0.2);
+}
+
+.feature-card::after {
+  content: "";
+  position: absolute;
+  bottom: 10px;
+  left: 20px;
+  width: calc(100% - 40px);
+  height: 6px;
+  background: #ff9c00; /* orange shadow under card */
+  border-radius: 0 0 12px 12px;
+  z-index: -1;
+  transition: all 0.3s;
+}
+
+.feature-card:hover::after {
+  height: 10px; /* expand on hover */
+}
+
+
+
+
+
+
+
+
+
+/* ================= ECO SECTION LAYOUT ================= */
+
+.ecos-section {
+  display: grid;
+  grid-template-columns: 1fr 0.5fr 2fr;
+  gap: 40px;
+  align-items: center;
+  padding: 30px 1%;
+  margin-bottom: 30px;
+}
+
+/* ================= LEFT IMAGE ================= */
+
+.ecos-left img {
+  
+  width: 300px;
+  height: 400px;
+}
+
+/* ================= CENTER CIRCLE ================= */
+
+.ecos-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ecos-circle {
+  width: 210px;
+  height: 210px;
+  background: #fff;
+  border-radius: 50%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.ecos-circle::before {
+  content: "";
+  position: absolute;
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  border: 15px solid transparent;
+  border-right-color: #6621ba;
+  border-top-color: #6621ba;
+  transform: rotate(45deg);
+  
+}
+
+
+.ecos-circle h2 {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+/* ================= RIGHT SIDE CARDS ================= */
+
+.ecos-right {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+
+/* CARD */
+.ecos-card {
+  background: #ffffff;
+  padding: 20px 30px;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  width: 580px;
+  height: 60px;
+  min-height: 40px;
+  justify-content: space-between;
+line-height: 1.1;
+  /* ORANGE BACK EFFECT */
+  box-shadow:
+    15px 15px 0px #ff9c00,   
+    0px 30px 20px 15px rgba(0,0,0,0.08);
+   
+
+
+
+  }
+
+.button-container {
+  display: flex;
+  justify-content: center; /* center horizontally */
+  margin-top: 5px !important;
+  margin-bottom: 20px !important ;
+  width: 350px; 
+  align-items: center;  
+  margin: 0px auto;  /* optional spacing */
+}
+
+
+
+
+.ecos-card:hover {
+  transform: translateX(-15px);
+  box-shadow:
+    18px 18px 0px #ff9c00,
+    0 12px 25px rgba(0,0,0,0.15);
+}
+
+
+
+.ecos-card:nth-child(1) {
+  margin-left: -60px;
+}
+
+/* Second (center) card moves inside */
+.ecos-card:nth-child(2) {
+  margin-left: -10px;   /* adjust this value */
+}
+
+/* Third card back to normal */
+.ecos-card:nth-child(3) {
+  margin-left: 40px;
+}
+.ecos-card:nth-child(4) {
+  margin-left: 40px;
+}
+
+/* Second (center) card moves inside */
+.ecos-card:nth-child(5) {
+  margin-left: -10px;   /* adjust this value */
+}
+
+/* Third card back to normal */
+.ecos-card:nth-child(6) {
+  margin-left: -60px;
+}
+/* LOGO */
+.ecos-card img {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  border-radius: 50%;
+  
+  padding: 10px;
+}
+.eco-tick {
+  color: #ff9c00;
+  font-weight: bold;
+  margin-right: 6px;
+}
+
+/* CONTENT */
+.ecos-card-content {
+  flex:1;
+}
+
+/* TITLE */
+.ecos-card-content h3 {
+  font-size: 16px;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+/* POINTS */
+.ecos-card-content p {
+  margin: 4px 0;
+  font-size: 14px;
+  color: #333;
+}
+
+/* SITE LINK */
+.ecos-link {
+  position: absolute;
+  top: 20px;
+  right: 35px;
+  color: #6c2bd9;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.ecos-link:hover {
+  text-decoration: underline;
+}
+
+
+
+
+
+
+
+
+/* ================= CAREERS CARD ================= */
+/* ================= CAREERS CARD ================= */
+.careers-card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 40px 60px;
+  border-radius: 10px;
+  overflow: visible; /* IMPORTANT */
+   margin-top: 80px;
+  background: linear-gradient(135deg, #6a1fb3, #7e2bd4);
+  color: #fff;
+  margin-bottom: 30px;
+  max-width: 1100px; 
+  margin: 80px auto 30px;
+}
+
+/* ================= LEFT SIDE ================= */
+.careers-card-left {
+  position: relative;
+  flex: 1;
+}
+
+/* WHITE CIRCLE BACKGROUND */
+.careers-card-left::before {
+  content: "";
+  position: absolute;
+  bottom: -20px;
+  left: 0;
+  width: 420px;
+  height: 420px;
+  
+  border-radius: 50%;
+  z-index: 1;
+}
+
+/* IMAGE OVERLAY */
+.careers-card-left img {
+  position: absolute;
+  bottom: -80px; /* pushes outside */
+  left: 40px;
+
+  width: 320px;
+  z-index: 2;
+
+  pointer-events: none;
+}
+
+/* ================= RIGHT CONTENT ================= */
+.careers-card-right {
+  flex: 1.2;
+  z-index: 3;
+  padding-left: 40px;
+}
+
+.careers-card-right h2 {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.p-btns-wrapper p {
+  font-size: 16px;
+  line-height: 1.7;
+  margin-bottom: 30px;
+  opacity: 0.9;
+  text-align: center;
+  
+}
+.p-btns-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* THIS centers button */
+}
+/* BUTTON */
+.p-btns-wrapper button {
+  background: #fff;
+  color: #222;
+  padding: 10px 28px;
+  font-size: 16px;
+  border-radius: 10px;
+  border: 2px solid #ff9800;
+  cursor: pointer;
+  transition: 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+ 
+  
+}
+
+.p-btns-wrapper button:hover {
+  
+  color: #ff9800;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 992px) {
+  .careers-card {
+    flex-direction: column;
+    text-align: center;
+    padding: 60px 20px;
+  }
+
+  .careers-card-left {
+    height: 260px;
+  }
+
+  .careers-card-left img {
+    position: relative;
+    bottom: 0;
+    left: 0;
+    width: 220px;
+  }
+
+  .careers-card-left::before {
+    display: none;
+  }
+
+  .careers-card-right {
+    padding-left: 0;
+  }
+}
+
+
+
+
+
+/* ================= TABLET (992px) ================= */
+@media (max-width: 992px) {
+
+  /* HERO */
+  .hero {
+    padding: 0 40px;
+    min-height: 380px;
+  }
+
+  .text-box h1 {
+    font-size: 18px;
+  }
+
+  .text-box p {
+    font-size: 14px;
+  }
+
+  /* STATS */
+  .stats-box {
+    flex-direction: column;
+    gap: 10px;
+    padding: 15px;
+    margin-top: -40px;
+  }
+
+  /* ABOUT */
+  .about-section {
+    padding: 40px;
+  }
+
+  /* WHY SECTION */
+  .why-container {
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .why-left,
+  .why-right {
+    width: 100%;
+  }
+
+  /* PROJECTS */
+  .fixed-carousel {
+    gap: 20px;
+  }
+
+  .carousel-card {
+    width: 280px;
+    height: 200px;
+  }
+
+  /* ECOSYSTEM */
+  .ecos-section {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .ecos-left img {
+    margin: auto;
+  }
+
+  .ecos-right {
+    align-items: center;
+  }
+
+  .ecos-card {
+    width: 90%;
+    margin-left: 0 !important;
+  }
+
+  /* CAREERS */
+  .careers-card {
+    padding: 40px 30px;
+  }
+}
+
+
+/* ================= MOBILE (768px) ================= */
+@media (max-width: 768px) {
+
+  /* HERO */
+  .hero {
+    padding: 20px;
+    min-height: auto;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .primary-btn,
+  .secondary-btn {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  /* STATS */
+  .stats-box {
+    width: 95%;
+    border-radius: 8px;
+  }
+
+  .stats-box div h3 {
+    font-size: 1.4rem;
+  }
+
+  .stats-box div p {
+    font-size: 0.9rem;
+  }
+
+  /* ABOUT */
+  .about-section {
+    padding: 20px;
+  }
+
+  .about-image {
+    height: 220px;
+  }
+
+  .overlay-card {
+    width: 100%;
+    right: 0;
+  }
+
+  /* WHY */
+  .circle {
+    width: 220px;
+    height: 220px;
+  }
+
+  .circle h2 {
+    font-size: 20px;
+  }
+
+  /* PROJECTS (IMPORTANT FIX) */
+  .fixed-carousel {
+    flex-direction: column;
+  }
+
+  .carousel-card {
+    width: 90%;
+    height: 220px;
+    transform: scale(1) !important;
+    opacity: 1 !important;
+  }
+
+  .carousel-card::after {
+    display: none; /* remove overlays */
+  }
+
+  .project-info {
+    position: static;
+    background: #fff;
+    color: #222 !important;
+    padding: 10px;
+  }
+
+  /* SHOWCASE BUTTON */
+  .showcase-btn {
+    position: static;
+    transform: none;
+    margin-top: 20px;
+  }
+
+  /* SUCCESS CARDS */
+  .success-card {
+    min-width: 85%;
+  }
+
+  /* ECOSYSTEM */
+  .ecos-circle {
+    width: 160px;
+    height: 160px;
+  }
+
+  .ecos-circle::before {
+    display: none;
+  }
+
+  .ecos-card {
+    flex-direction: column;
+    height: auto;
+    padding: 15px;
+    text-align: center;
+  }
+
+  .ecos-card img {
+    margin-bottom: 10px;
+  }
+
+  /* CAREERS */
+  .careers-card {
+    flex-direction: column;
+    padding: 40px 20px;
+    text-align: center;
+  }
+
+  .careers-card-left img {
+    position: relative;
+    bottom: 0;
+    left: 0;
+    width: 200px;
+    margin-bottom: 20px;
+  }
+
+  .careers-card-right {
+    padding-left: 0;
+  }
+}
+
+
+/* ================= SMALL MOBILE (480px) ================= */
+@media (max-width: 480px) {
+
+  .text-box {
+    padding: 15px;
+  }
+
+  .text-box h1 {
+    font-size: 16px;
+  }
+
+  .text-box p {
+    font-size: 13px;
+  }
+
+  .projects-title {
+    font-size: 22px;
+  }
+
+  .projects-sub {
+    font-size: 14px;
+  }
+
+  .course-body {
+    padding: 15px;
+  }
+
+  .btn-primary-custom,
+  .btn-outline-primary-custom {
+    font-size: 14px;
+    padding: 8px;
+  }
+}
+
+

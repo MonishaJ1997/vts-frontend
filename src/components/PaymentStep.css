@@ -1,0 +1,307 @@
+.payment-wrapper {
+  padding: 30px;
+  background: #fff;
+}
+
+.payment-title {
+  margin-bottom: 20px;
+  font-weight: 600;
+  color: black;
+  text-align: center;
+}
+
+.payment-layout {
+  display: flex;
+  gap: 80px;
+}
+
+/* LEFT */
+.amount-box {
+  width: 280px;
+  
+  padding: 20px;
+  border-radius: 12px;
+  color: black;
+}
+
+.amount-box div {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.amount-box .total {
+  font-weight: bold;
+}
+
+/* RIGHT */
+.payment-options {
+  flex: 1;
+}
+
+.payment-card {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  border: 1.5px solid #ddd;
+  border-radius: 14px;
+  padding: 15px;
+  margin-bottom: 15px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.payment-card.active {
+  border-color: #ff9c00;
+  background: #fff7ec;
+}
+
+/* DOUBLE RADIO */
+.radio-outer {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 2px solid #999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.radio-inner {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #ff9c00;
+}
+
+/* ICONS */
+.icons {
+  display: flex;
+  gap: 10px;
+}
+
+.icons img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+/* TEXT */
+.method-name {
+  font-weight: 500;
+}
+
+/* UPI INPUT */
+.upi-box {
+  padding: 15px;
+  width: 50%;
+  margin-bottom: 20px;
+  flex: 1;
+}
+
+.upi-box input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+}
+
+/* PAY BUTTON */
+.pay-btn {
+  width: 40%;
+  background: #ff9c00;
+  color: #fff;
+  border: none;
+  padding: 14px;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  white-space: nowrap;
+  margin-bottom: 38px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .payment-layout {
+    flex-direction: column;
+  }
+
+  .amount-box {
+    width: 100%;
+  }
+
+  .icons img {
+    width: 32px;
+  }
+}
+.upi-row {
+  display: flex;
+  align-items: flex-end;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+
+
+
+/* OVERLAY (DARK BACKGROUND) */
+.payment-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65); /* darker + cleaner */
+  backdrop-filter: blur(3px); /* modern blur effect */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+/* MODAL BOX */
+.payment-modal-content {
+  background: white;
+  padding: 35px 30px;
+  border-radius: 24px;
+  width: 520px;
+  max-width: 92%;
+  text-align: center;
+  position: relative;
+  animation: popup 0.3s ease;
+}
+
+/* SMOOTH POPUP */
+@keyframes popup {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* CLOSE BUTTON (BETTER DESIGN) */
+.close-btn {
+  position: absolute;
+  top: 15px;
+  right: 18px;
+  width: 32px;
+  height: 32px;
+  border: 2px solid #000;
+  border-radius: 50%;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background: #fff;
+  transition: 0.2s;
+}
+
+.close-btn:hover {
+  background: #000;
+  color: #fff;
+}
+
+/* SUCCESS ICON */
+.success-icon {
+  width: 75px;
+  height: 75px;
+  background: #43a047;
+  color: #fff;
+  border-radius: 50%;
+  font-size: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 18px;
+}
+
+/* TITLE */
+.payment-modal-content h2 {
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+/* TRANSACTION BOX */
+.transaction-box {
+  background: #a7c7a6;
+  padding: 20px 25px;
+  border-radius: 18px;
+  margin-bottom: 25px;
+}
+
+/* HEADING */
+.transaction-box h3 {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+/* ROW FIX (IMPORTANT) */
+.rows {
+  display: grid;
+  grid-template-columns: 1fr auto 1.5fr; /* label : value */
+  align-items: center;
+  margin-bottom: 10px;
+  font-size: 15px;
+}
+
+/* LABEL */
+.rows span:first-child {
+  font-weight: 500;
+}
+
+/* COLON */
+.rows span:nth-child(2) {
+  text-align: center;
+  padding: 0 5px;
+}
+
+/* VALUE */
+.rows span:last-child {
+  text-align: right;
+  font-weight: 500;
+}
+
+/* BUTTON */
+.download-btn {
+  background: #ff9800;
+  color: #fff;
+  border: none;
+  padding: 13px 28px;
+  border-radius: 10px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.download-btn:hover {
+  color: #e68900;
+}
+
+/* ================= MOBILE ================= */
+@media (max-width: 768px) {
+  .payment-modal-content {
+    padding: 25px 18px;
+  }
+
+  .success-icon {
+    width: 60px;
+    height: 60px;
+    font-size: 28px;
+  }
+
+  /* STACK CLEANLY ON MOBILE */
+  .row {
+    grid-template-columns: 1fr;
+    gap: 2px;
+    text-align: left;
+  }
+
+  .row span:last-child {
+    text-align: left;
+  }
+
+  .download-btn {
+    width: 100%;
+  }
+}

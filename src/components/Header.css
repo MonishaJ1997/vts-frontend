@@ -1,0 +1,377 @@
+/* ================== Global ================== */
+* {
+  font-family: "Outfit", sans-serif;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ================== Top Bar ================== */
+.top-bar {
+  background: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 40px;
+  font-size: 14px;
+  color: black;
+}
+
+.top-left span {
+  color: #EF1400;
+  font-weight: 600;
+}
+
+.top-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 15px;
+}
+
+.icon {
+  margin-right: 5px !important;
+}
+
+.icon  {
+  color: #EF1400 !important;
+}
+
+.phone-icon {
+  margin-left: 15px;
+}
+
+/* ================== Announcement ================== */
+.announcement {
+  background: #6621BA;
+  color: white;
+  text-align: center;
+  padding: 12px;
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 30px; /* white space below */
+}
+
+/* ================== Navbar ================== */
+.navbar {
+  background: #6621BA;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  height: 60px; /* desktop height */
+  padding: 0 10px;
+}
+
+/* Inner wrapper for desktop layout */
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  height: 60px;
+}
+
+/* Nav Left: Logo + Search */
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  height: 60px;
+}
+
+/* Logo */
+.logo img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 1px solid #43A047;
+  position: relative;
+  top: -12px; /* slightly upward inside 60px navbar */
+}
+
+/* Search bar */
+.search-box {
+  background: white;
+  padding: 4px 12px;
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  width: 450px;
+  height: 36px;
+}
+
+.search-box input {
+  border: none;
+  outline: none;
+  width: 100%;
+  margin-left: 8px;
+  font-size: 14px;
+   background: transparent;
+}
+
+.search-icon {
+  color: #4A5565;
+  font-size: 16px;
+}
+
+/* Nav Right: Links + Enroll */
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 85px;
+  height: 60px;
+  justify-content: flex-start; /* left align */
+}
+
+/* Nav links */
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 25px;
+}
+
+.nav-links li a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 18px;
+  position: relative;
+  bottom: -5px;
+}
+
+.nav-links li a.active {
+  color: #FF9C00;
+  text-decoration: none;
+}
+
+.nav-links li a:hover {
+  color: #FF9C00;
+}
+
+/* Enroll button */
+.enroll-btn {
+  background: #FF9C00;
+  border: none;
+  padding: 11px 30px !important;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  color: white;
+  transition: 0.3s;
+ 
+}
+
+.enroll-btn:hover {
+  background: #da9931;
+}
+
+/* Hamburger Toggle */
+.menu-toggler {
+  display: none;
+  font-size: 1.6rem;
+  cursor: pointer;
+  color: white;
+  z-index: 200;
+}
+
+/* ================== Responsive ================== *
+@media (max-width: 768px) {
+  .navbar {
+    height: 150px; /* increased height for mobile *
+  }
+
+  .navbar-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    height: auto;
+  }
+
+  .nav-left {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 5px;
+  }
+
+  .search-box {
+    width: 90%;
+    order: 2;
+  }
+
+  /* Hamburger toggle always visible above dropdown *
+  .menu-toggler {
+    display: block;
+    order: 3;
+    margin-top: 5px;
+    position: relative;
+  }
+
+  .nav-right {
+    position: absolute;
+    top: 100%;
+    left: 0; /* align dropdown to left *
+    width: 100%;
+    flex-direction: column;
+    background: #fff;
+    display: none;
+    padding: 10px 0;
+    border-top: 1px solid #ddd;
+    z-index: 150;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  .nav-right.active {
+    display: flex;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    width: 100%;
+    text-align: left;
+    gap: 0;
+    padding-left: 20px;
+  }
+
+  .nav-links li a {
+    color: #333;
+    text-decoration: none;
+  }
+
+  .nav-links li a.active {
+    color: #FF9C00;
+  }
+
+  .nav-links li {
+    padding: 8px 0;
+    border-bottom: 1px solid #ddd;
+    background: white;
+  }
+
+  .enroll-btn {
+    width: 90%;
+    margin: 8px auto 0;
+    text-align: center;
+  }
+}
+
+*/
+
+/* ================== Responsive Navbar for Mobile ================== */
+/* ================== Mobile Responsive Navbar ================== */
+@media (max-width: 997px) {
+  .navbar {
+    height: 60px; /* keep compact */
+    padding: 5px 10px;
+  }
+
+  .navbar-container {
+    display: flex;
+    justify-content: space-between; /* spread logo, search, toggler */
+    align-items: center;
+    width: 100%;
+  }
+
+  /* Logo */
+  .logo img {
+    width: 50px;
+    height: 50px;
+    top: 0;
+  }
+
+  /* Search box */
+  .search-box {
+    width: 60%; /* adjust as needed */
+    order: 2;
+  }
+
+  /* Hamburger toggler */
+  .menu-toggler {
+    display: block;
+    order: 3;
+    font-size: 1.6rem;
+    cursor: pointer;
+    color: white;
+  }
+
+  /* Nav menu hidden by default */
+  .nav-right {
+    position: absolute;
+    top: 60px; /* below navbar */
+    left: 0;
+    width: 100%;
+    flex-direction: column;
+    background-color:white;
+    display: none; /* hidden until toggler click */
+    padding: 10px 0;
+    border-top: 1px solid #ddd;
+    z-index: 150;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  }
+
+  /* Show nav when toggler clicked */
+  .nav-right.active {
+    display: flex;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    width: 100%;
+    padding-left: 20px;
+    gap: 0;
+  }
+
+  .nav-links li {
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+    width: 100%;
+    background-color: white;
+  }
+
+  .nav-links li a {
+    color: #333;
+    font-size: 16px;
+    text-decoration: none;
+  }
+
+  .nav-links li a.active {
+    color: #FF9C00;
+  }
+
+  .enroll-btn {
+    display: none;
+}
+}
+@media (max-width: 768px) {
+  .top-bar {
+    flex-direction: column;      /* stack content vertically */
+    align-items: center;         /* center items */
+    padding: 8px 15px;           /* reduce padding */
+    font-size: 13px;             /* smaller text */
+    gap: 5px;                    /* space between top-left and top-right */
+  }
+
+  .top-left,
+  .top-right {
+    display: flex;
+    flex-direction: column;      /* stack text if needed */
+    align-items: center;
+    gap: 3px;
+    text-align: center;
+  }
+
+  .top-right {
+    font-size: 14px;
+    gap: 5px;
+  }
+
+  .top-right .icon {
+    margin-right: 5px;
+    color: #EF1400;
+  }
+
+  .phone-icon {
+    margin-left: 0;              /* remove extra margin on mobile */
+  }
+}

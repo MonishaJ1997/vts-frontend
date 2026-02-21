@@ -1,0 +1,254 @@
+/* OVERLAY */
+/* ==============================
+   ENROLL OVERLAY & MODAL
+================================ */
+.enroll-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.enroll-modal {
+  background: #fff;
+  width: 90%;
+  max-width: 1100px;
+  max-height: 90vh;      /* limit height on large screens */
+  border-radius: 22px;
+  padding: 30px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;      /* ✅ allows scroll inside modal */
+  box-sizing: border-box;
+}
+
+/* CLOSE BUTTON */
+.close-btn {
+  position: absolute;
+  top: 20px;
+  right: 22px;
+  font-size: 26px;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+/* STEP HEADER */
+.step-header {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-bottom: 20px;
+  flex-wrap: wrap;      /* ✅ wrap pills on small screens */
+}
+
+.step-pill {
+  padding: 10px 28px;
+  border-radius: 30px;
+  background: #eaeaea;
+  font-weight: 500;
+  text-align: center;
+  min-width: 80px;
+}
+
+.step-pill.active {
+  background: #ff9c00;
+  color: #fff;
+}
+
+/* FORM GRID */
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.form-group.full {
+  grid-column: span 3;
+}
+
+/* INPUTS */
+.form-group input,
+.form-group select,
+.form-group textarea {
+  height: 45px;
+  padding: 0 14px;
+  border-radius: 10px;
+  border: 2px solid #cfcfcf;
+  outline: none;
+}
+
+textarea {
+  height: 120px;
+  padding-top: 10px;
+  resize: none;
+}
+
+/* NEXT & SUBMIT BUTTONS */
+.next-btn,
+.submit-btn {
+  display: block;
+  margin: 25px auto 0;
+  padding: 12px 40px;
+  background: #ff9c00;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.submit-btn {
+  width: 20%;  /* default on large screens */
+}
+
+/* ==============================
+   CONFIRM DETAILS
+================================ */
+.confirm-details {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.confirm-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px 60px;
+  background: #F2E9FF;
+  padding: 40px 50px;
+  border-radius: 18px;
+  max-width: 900px;
+  margin: 0 auto 40px;
+}
+
+.confirm-item {
+  display: flex;
+  align-items: flex-start;
+  font-size: 17px;
+}
+
+.confirm-item strong {
+  min-width: 140px;
+}
+
+/* BUTTONS */
+.confirm-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.back-btn,
+.confirm-btn {
+  padding: 12px 38px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.back-btn {
+  background: #fff;
+  border: 2px solid #FF9C00;
+  color: #000;
+}
+
+.confirm-btn {
+  background: #FF9C00;
+  border: none;
+  color: #fff;
+}
+
+/* ==============================
+   RESPONSIVE MEDIA QUERIES
+================================ */
+
+/* Large tablets / Medium screens */
+@media (max-width: 992px) {
+  .form-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .form-group.full {
+    grid-column: span 2;
+  }
+
+  .submit-btn {
+    width: 40%;
+  }
+}
+
+/* Small screens / phones */
+@media (max-width: 768px) {
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+  .form-group.full {
+    grid-column: span 1;
+  }
+
+  .submit-btn,
+  .next-btn {
+    width: 100%;
+  }
+
+  .step-header {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .step-pill {
+    width: 100%;
+    padding: 10px 0;
+    font-size: 14px;
+  }
+
+  .confirm-grid {
+    grid-template-columns: 1fr;
+    padding: 25px 20px;
+  }
+
+  .confirm-item {
+    font-size: 15px;
+  }
+
+  .confirm-item strong {
+    min-width: 120px;
+  }
+
+  .confirm-buttons {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .back-btn,
+  .confirm-btn {
+    width: 100%;
+  }
+
+  .enroll-modal {
+    max-height: 95vh;  /* allow modal to fit small screen */
+    padding-bottom: 60px; /* space for buttons */
+  }
+}
+
+/* Extra small phones */
+@media (max-width: 480px) {
+  .step-pill {
+    font-size: 13px;
+    padding: 8px 0;
+  }
+
+  .submit-btn,
+  .next-btn {
+    font-size: 14px;
+    padding: 10px 16px;
+  }
+
+  .enroll-modal {
+    padding: 20px 15px 50px 15px; /* enough bottom padding */
+  }
+}

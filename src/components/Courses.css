@@ -1,0 +1,527 @@
+.courses-section {
+          padding: 60px 5%;
+          background: #f3f3f3;
+        }
+
+        /* HEADER */
+
+        .courses-header {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 40px;
+          flex-wrap: wrap;
+        }
+        .courses-header h2 {
+          font-size: 32px;
+          font-weight: 600;
+          margin: 0 auto;
+        }
+
+        .consult-btn {
+          background: #f9a825;
+          color: white;
+          border: none;
+          padding: 12px 25px;
+          border-radius: 10px;
+          cursor: pointer;
+          font-weight: 500;
+        }
+
+        /* FILTER */
+
+        .filter-tabs {
+          display: flex;
+          justify-content: center;
+          gap: 25px;
+          margin-bottom: 40px;
+          flex-wrap: wrap;
+        }
+
+        .filter-tabs button {
+          background: transparent;
+          border: none;
+          font-size: 18px;
+          padding: 10px 25px;
+          border-radius: 30px;
+          cursor: pointer;
+          color: #6a1b9a;
+          transition: 0.3s;
+        }
+
+        .active-tab {
+          background: linear-gradient(90deg, #6a1b9a, #8e24aa);
+          color: white;
+        }
+
+        /* GRID */
+
+        .course-grid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 30px;
+        }
+
+        /* CARD */
+
+        .course-card {
+          background: #fff;
+          border: 3px solid #6a1b9a;
+          border-radius: 20px;
+          overflow: hidden;
+          transition: all 0.3s ease;
+        }
+
+        .course-card:hover {
+          transform: translate(-8px, -8px);
+          box-shadow: 12px 12px 25px rgba(0,0,0,0.15);
+        }
+
+        .course-img {
+          width: 100%;
+          height: 220px;
+          object-fit: cover;
+        }
+
+        .course-content {
+          padding: 20px;
+        }
+
+        .course-content h3 {
+          color: #6a1b9a;
+          margin-bottom: 15px;
+        }
+
+        .course-info p {
+          margin: 6px 0;
+          font-size: 14px;
+          display: flex;
+          align-items: center;
+        }
+
+        .icon {
+          margin-right: 8px;
+          color: #6a1b9a;
+        }
+
+        .desc {
+          margin: 10px 0;
+          font-size: 14px;
+        }
+
+        .card-buttons {
+          display: flex;
+          justify-content: space-between;
+          margin-top: 15px;
+        }
+
+        .view-btn {
+          border: 2px solid #f9a825;
+          background: transparent;
+          padding: 8px 18px;
+          border-radius: 8px;
+          cursor: pointer;
+        }
+
+        .enroll-btn {
+          background: #f9a825;
+          color: white;
+          border: none;
+          padding: 8px 18px;
+          border-radius: 8px;
+          cursor: pointer;
+        }
+
+        /* RESPONSIVE */
+
+        @media (max-width: 1024px) {
+          .course-grid {
+            grid-template-columns: repeat(2, 1fr);
+          }
+        }
+
+        @media (max-width: 768px) {
+          .courses-header {
+            flex-direction: column;
+            gap: 20px;
+          }
+
+          .course-grid {
+            grid-template-columns: 1fr;
+          }
+
+          .courses-header h2 {
+            text-align: center;
+          }
+        }
+
+/* HEADER WRAPPER */
+.featured-header {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+}
+
+/* CENTER HEADING */
+.featured-heading {
+  text-align: center;
+}
+
+/* TITLE */
+.featured-title {
+  font-size: 32px;
+  font-weight: 600;
+  margin: 0;
+}
+
+/* SUBTITLE */
+.featured-sub {
+  color: #666;
+  margin-top: 5px;
+}
+
+/* BUTTON */
+.consult-btn {
+  background: #ff9c00;
+  color: #fff;
+  border: none;
+  padding: 10px 25px;
+  border-radius: 8px;
+  font-weight: 500;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.consult-btn:hover{
+background-color: #da9931;
+}
+.featured-title {
+  width: 100%;
+  text-align: center;
+  display: block;
+  margin: 0 auto;
+  font-weight: 500;
+}
+
+.featured-sub {
+  color: #666;
+}
+
+/* Free Consultation Button */
+.consult-btn {
+  background: #f9a825;
+  color: #fff;
+  border: none;
+  padding: 10px 25px;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+/* Filter */
+.filter-tabs {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  background: transparent;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 25px;
+  color: #6a1b9a;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.active-tab {
+  background: linear-gradient(90deg, #6a1b9a, #8e24aa);
+  color: #fff;
+}
+
+/* Card */
+.course-card {
+  background: #fff;
+  border: 3px solid #6a1b9a;
+  border-radius: 18px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.course-card:hover {
+  transform: translate(-8px, -8px);
+  box-shadow: 10px 10px 20px rgba(0,0,0,0.15);
+}
+
+.course-image {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+
+.course-body {
+  padding: 20px;
+}
+
+.course-title {
+  color: #6a1b9a;
+  margin-bottom: 15px;
+}
+
+.course-meta {
+  margin-bottom: 10px;
+}
+
+.meta-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.meta-icon {
+  color: #6a1b9a;
+}
+
+.course-desc {
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+
+/* Buttons */
+.course-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.btn-outline-custom {
+  border: 2px solid #ff9c00;
+  background: transparent;
+  padding: 6px 15px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.btn-primary-custom {
+  background: #ff9c00;
+  border: none;
+  color: #fff;
+  padding: 6px 15px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.btn-primary-custom :hover{
+  background-color: #da9931;
+}
+/* Responsive */
+@media (max-width: 768px) {
+  .featured-title {
+    font-size: 24px;
+  }
+
+  .filter-tabs {
+    justify-content: center;
+  }
+}
+/* FILTER TABS */
+.filter-tabs {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+/* FILTER CONTAINER */
+.filter-tabs {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+/* DEFAULT BUTTON */
+.filter-tabs .filter-btn {
+  background: transparent !important;
+  border: none !important;
+  padding: 8px 22px;
+  border-radius: 30px;
+  font-weight: 500;
+  color: #6621ba !important;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* HOVER */
+.filter-tabs .filter-btn:hover {
+  background: #f3e5f5 !important;
+}
+
+/* ACTIVE BUTTON ONLY */
+.filter-tabs .filter-btn.active-tab {
+  background: #6621ba!important;
+  color: #fff !important;
+}
+
+/* Remove bootstrap focus effect */
+.filter-tabs .filter-btn:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+
+/* ===================== SECTION ===================== *
+.featured-wrapper {
+  padding: 60px 5%;
+  background: #f3f3f3;
+}
+
+/* ===================== HEADER ===================== *
+.featured-header {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  margin-bottom: 40px;
+  gap: 20px;
+}
+
+.featured-heading {
+  text-align: center;
+}
+
+.featured-title {
+  font-size: 32px;
+  font-weight: 600;
+  margin: 0 auto;
+}
+
+.consult-btn {
+  background: #f9a825;
+  color: #fff;
+  border: none;
+  padding: 10px 25px;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: 0.3s;
+}
+
+.consult-btn:hover {
+  background-color: #da9931;
+}
+
+/* ===================== FILTER TABS ===================== *
+.filter-tabs {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.filter-btn {
+  background: transparent;
+  border: none;
+  padding: 8px 22px;
+  border-radius: 30px;
+  font-weight: 500;
+  color: #6621ba;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.filter-btn:hover {
+  background: #f3e5f5;
+}
+
+.filter-btn.active-tab {
+  background: #6621ba;
+  color: #fff;
+}
+
+/* ===================== GRID ===================== *
+.row.g-4 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+/* ===================== COURSE CARD ===================== *
+.course-card {
+  background: #fff;
+  border: 3px solid #6a1b9a;
+  border-radius: 18px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.course-card:hover {
+  transform: translate(-8px, -8px);
+  box-shadow: 10px 10px 20px rgba(0,0,0,0.15);
+}
+
+.course-image {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+
+.course-body {
+  padding: 20px;
+}
+
+.course-title {
+  color: #6a1b9a;
+  margin-bottom: 15px;
+}
+
+.course-meta {
+  margin-bottom: 10px;
+}
+
+.meta-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.meta-icon {
+  color: #6a1b9a;
+}
+
+.course-desc {
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+
+.course-buttons {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.btn-outline-custom {
+  border: 2px solid #ff9c00;
+  background: transparent;
+  padding: 6px 15px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.btn-primary-custom {
+  background: #ff9c00;
+  border: none;
+  color: #fff;
+  padding: 6px 15px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-primary-custom:hover {
+  background-color: #da9931;
+}
+
+/* ===================== MEDIA QUERIES ===================== */

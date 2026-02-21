@@ -1,0 +1,26 @@
+.story-card {
+  width: 18%;
+  cursor: pointer;
+  transition: transform 0.4s ease;
+}
+
+.story-card:hover {
+  transform: scale(1.05);
+}
+
+.story-card img {
+  height: 350px;
+  object-fit: cover;
+  width: 100%;
+  border-radius: 15px;
+}
+
+.overlay {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 15px;
+  color: white;
+  background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+  border-radius: 0 0 15px 15px;
+}
