@@ -315,6 +315,11 @@ background-color: #da9931;
 .btn-primary-custom :hover{
   background-color: #da9931;
 }
+
+.btn-outline-custom:hover {
+  color: #ff9c00 !important;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   .featured-title {

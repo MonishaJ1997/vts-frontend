@@ -4,10 +4,10 @@ import "./Footer.css";
 import '@fortawesome/fontawesome-free/css/all.min.css';
 const Footer = () => {
   const [logo, setLogo] = useState("");
-
+const BASE_URL = "http://127.0.0.1:8000";
   useEffect(() => {
     axios
-      .get("http://127.0.0.1:8000/api/footer-logo/")
+      .get(`${BASE_URL}/api/footer-logo/`)
       .then((res) => {
         setLogo(res.data.logo);
       })
@@ -22,7 +22,7 @@ const Footer = () => {
         <div className="footer-col">
           {logo && (
             <img
-              src={`http://127.0.0.1:8000${logo}`}
+              src={`${BASE_URL}${logo}`}
               alt="logo"
               className="footer-logo"
             />
@@ -73,6 +73,9 @@ const Footer = () => {
         </div>
 
       </div>
+      <div className="footer-bottom">
+  © 2026 All Rights Reserved By DITRP
+</div>         
     </footer>
   );
 };

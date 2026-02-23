@@ -6,9 +6,17 @@ import { FaCalendarAlt } from "react-icons/fa";
 import { MdSchool } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 
+
+
+
+
 const Home = () => {
   const BASE_URL = "http://127.0.0.1:8000";
 const navigate = useNavigate();
+
+const [loading, setLoading] = useState(true);
+
+
   const [hero, setHero] = useState(null);
   const [about, setAbout] = useState(null);
   const [whyChoose, setWhyChoose] = useState(null);
@@ -21,10 +29,162 @@ const navigate = useNavigate();
   const [men, setMen] = useState(null);
   const [modalIndex, setModalIndex] = useState(null);
   const [successStories, setSuccessStories] = useState([]);
+  const [selectedStory, setSelectedStory] = useState(null);
+//last carousel
+const [modalOpen, setModalOpen] = useState(false);
+const [currentIndex, setCurrentIndex] = useState(0);
+const [isPlaying, setIsPlaying] = useState(false);
+const [progress, setProgress] = useState(0);
+const [storyRoles, setStoryRoles] = useState([]);
+const [currentImageIndex, setCurrentImageIndex] = useState(0);
+// Open modal
+
+
+const openModal = (story) => {
+  console.log("CLICKED:", story);
+
+  // 🔥 Match ID
+  const matched = storyRoles.find(item => item.id === story.id);
+
+  console.log("MATCHED DATA:", matched);
+
+  if (matched) {
+    setSelectedStory(matched);
+    setCurrentIndex(0);
+    setModalOpen(true);
+    setProgress(0);
+    setIsPlaying(false);
+  }
+};
+// Close modal
+const closeModal = () => {
+  setModalOpen(false);
+  setIsPlaying(false);
+};
+
+const currentStory = successStories[currentIndex];
+
+
+
+
+
+
   // index of clicked story
   
   const [startIndex, setStartIndex] = useState(0);
   const visibleCount = 5;
+
+
+
+useEffect(() => {
+  const savedData = sessionStorage.getItem("homeData");
+
+  if (savedData) {
+    const parsed = JSON.parse(savedData);
+    setHero(parsed.hero);
+    setAbout(parsed.about);
+    setWhyChoose(parsed.whyChoose);
+    setHowSection(parsed.howSection);
+    setCourses(parsed.courses);
+    setProjects(parsed.projects);
+    setSuccessStories(parsed.successStories);
+    setStoryRoles(parsed.storyRoles);
+    return;
+  }
+
+  // API calls
+  Promise.all([
+    axios.get(`${BASE_URL}/website-content/`),
+    axios.get(`${BASE_URL}/about-content/`),
+    axios.get(`${BASE_URL}/why-choose-us/`),
+    axios.get(`${BASE_URL}/api/how-it-works/`),
+    axios.get(`${BASE_URL}/api/featured-courses/`),
+    axios.get(`${BASE_URL}/api/student-projects/`),
+    axios.get(`${BASE_URL}/api/success-stories/`),
+    axios.get(`${BASE_URL}/api/storyrole/`)
+  ])
+    .then(([hero, about, why, how, courses, projects, stories, roles]) => {
+      setHero(hero.data);
+      setAbout(about.data);
+      setWhyChoose(why.data);
+      setHowSection(how.data.section);
+      setCourses(courses.data);
+      setProjects(projects.data);
+      setSuccessStories(stories.data);
+      setStoryRoles(roles.data);
+
+      sessionStorage.setItem("homeData", JSON.stringify({
+        hero: hero.data,
+        about: about.data,
+        whyChoose: why.data,
+        howSection: how.data.section,
+        courses: courses.data,
+        projects: projects.data,
+        successStories: stories.data,
+        storyRoles: roles.data
+      }));
+    })
+    .catch(err => console.log(err));
+
+}, []);
+
+
+
+
+
+
+
+
+
+useEffect(() => {
+  if (!modalOpen || !selectedStory?.images?.length) return;
+
+  const interval = setInterval(() => {
+    setCurrentIndex((prev) => {
+      const nextIndex = prev + 1;
+
+      if (nextIndex >= selectedStory.images.length) {
+        return 0;
+      }
+
+      return nextIndex;
+    });
+  }, 2000);
+
+  return () => clearInterval(interval);
+}, [modalOpen, selectedStory]);
+
+useEffect(() => {
+  if (!modalOpen || !isPlaying) return;
+
+  setProgress(0);
+
+  const interval = setInterval(() => {
+    setProgress((prev) => {
+      if (prev >= 100) return 0;
+      return prev + 1;
+    });
+  }, 100); // 10 sec total
+
+  return () => clearInterval(interval);
+}, [modalOpen,isPlaying]);
+const getCurrentImageIndex = () => {
+  if (!selectedStory?.images?.length) return 0;
+
+  if (progress <= 40) return 0;      // 0–30%
+  if (progress <= 80) return 1;      // 30–60%
+  return 1;                          // 60–100%
+};
+
+const nextSlide = () => {
+  setCurrentIndex((prev) => {
+    if (prev === successStories.length - 1) {
+      setIsPlaying(false); // stop at last
+      return prev;
+    }
+    return prev + 1;
+  });
+};
 
   // ================== FETCH DATA ==================
   useEffect(() => {
@@ -74,8 +234,12 @@ axios
       })
       .catch((err) => console.log(err));
 
-
-
+axios.get("http://127.0.0.1:8000/api/storyrole/")
+    .then(res => {
+      console.log("DATA:", res.data);
+      setStoryRoles(res.data);
+    })
+    .catch(err => console.log(err));
 
   }, []);
 
@@ -130,7 +294,14 @@ const visibleStories = successStories.slice(
 
 
   // ================== LOADING SAFETY ==================
-  if (!hero || !about || !whyChoose || !howSection) return null;
+if (!hero || !about || !whyChoose || !howSection) {
+  return (
+    <div style={{ padding: "100px", textAlign: "center" }}>
+      <h2>Loading.......</h2>
+     
+    </div>
+  );
+}
 
   return (
     <>
@@ -195,7 +366,7 @@ const visibleStories = successStories.slice(
         </div>
       </section>
 
-      {/* ================= WHY CHOOSE US ================= 
+      {/* ================= WHY CHOOSE US ================= *
       <section className="why-section py-5">
         <div className="container">
           <div className="row align-items-center">
@@ -220,7 +391,7 @@ const visibleStories = successStories.slice(
             </div>
           </div>
         </div>
-      </section>*/}
+      </section>
 
 
 
@@ -311,6 +482,13 @@ const visibleStories = successStories.slice(
 
 
 
+
+
+
+
+
+
+
       {/* ================= FEATURED COURSES ================= */}
       <section className="featured-wrapper container py-5">
         <h2 className="featured-title">Featured Courses</h2>
@@ -349,9 +527,13 @@ const visibleStories = successStories.slice(
           ))}
         </div>
       </section>
+
+    
+
+
        <div className="button-container">
   <button className="btn-outline-custom"
-  onClick={() => navigate(`/course/${course.id}`)}
+  onClick={() => navigate("/courses")}
   >View Details</button>
 </div>
 
@@ -518,7 +700,17 @@ const visibleStories = successStories.slice(
             <img src={story.image} alt={story.name} />
 
             {/* ▶ Video Icon */}
-        <div className="play-icon" onClick={() => openModal(index)}>▶</div>
+<div
+  className="play-icon"
+  onClick={(e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    console.log("CLICK WORKING"); // debug
+    openModal(story,index);
+  }}
+>
+  ▶
+</div>
             {/* Overlay */}    
             <div className="success-overlay">
               <h6>{story.name}</h6>
@@ -540,6 +732,55 @@ const visibleStories = successStories.slice(
            
      </section>
 )}
+
+
+
+{modalOpen && (
+  <div className="modal-overlay">
+    <div className="modal-box">
+      
+      {/* Close */}
+      <span className="close-btn" onClick={closeModal}>✕</span>
+ {selectedStory.images?.length > 0 ? (
+        <img
+          src={selectedStory.images[currentIndex]?.image}
+          alt="story"
+          style={{ width: "100%" }}
+        />
+      ) : (
+        <p>No images available</p>
+      )}
+
+      {/* Image *
+ <img
+  src={selectedStory?.image}
+  alt={selectedStory?.name}
+  onError={(e) => {
+    console.log("IMAGE ERROR:", selectedStory?.image);
+    e.target.style.display = "none";
+  }}
+/>*/}
+
+      {/* Bottom Controls */}
+      <div className="modal-controls">
+        <button
+          className="play-btn"
+          onClick={() => setIsPlaying(!isPlaying)}
+        >
+          {isPlaying ? "⏸" : "▶"}
+        </button>
+
+        <div className="progress-bar">
+          <div
+            className="progress"
+            style={{ width: `${progress}%` }}
+          ></div>
+        </div>
+      </div>
+    </div>
+  </div>
+)}
+
 
 
 

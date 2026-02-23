@@ -28,6 +28,7 @@
   inset: 0;
   background: linear-gradient(90deg, rgba(102,33,186,0.7), rgba(255,156,0,0.5));
   z-index: 1;
+  pointer-events: none;
 }
 .hero::before {
   content: "";
@@ -35,6 +36,7 @@
   inset: 0; /* top:0; right:0; bottom:0; left:0 */
   background: rgba(178, 102, 255, 0.3); /* light purple with transparency */
   z-index: 1;
+  pointer-events: none;
 }
 /* Content */
 .hero-content {
@@ -448,8 +450,6 @@
     margin-bottom: 20px;
   }
 }
-*/
-/* ================= SECTION ================= */
 
 
 :root {
@@ -898,13 +898,112 @@ transform: translateX(-50%);
 
 */
 
-/* SECTION */
+/* SECTION *
 .success-section {
   overflow: hidden;
 }
 
-/* OUTER WRAPPER */
+/* OUTER WRAPPER *
 .success-slider-wrapper {
+  overflow: hidden;
+  width: 100%;
+}*
+
+.success-slider-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+.success-slider-wrapper::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;   
+}
+
+/* SLIDER *
+.success-slider {
+  display: flex;
+  gap: 20px;
+  transition: transform 0.5s ease;
+   position: relative;
+  z-index: 1;
+}
+
+/* CARD 
+.success-card {
+  position: relative;
+  min-width: 240px;
+  height: 270px;
+  cursor: pointer;
+  border-radius: 16px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  z-index: 2;
+}
+
+
+/* IMAGE *
+.success-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* PLAY ICON *
+.play-icon {
+  position: absolute;
+  bottom: 20px;
+  right: 15px;
+  background: #fff;
+  color: #000;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+   z-index: 5;   
+  cursor: pointer;
+}
+/* IMPORTANT *
+body {
+  position: relative;
+  z-index: 0;
+}
+/* OVERLAY *
+.success-overlay {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(to top, rgba(193, 161, 232, 0.9), transparent);
+  color: #fff;
+   pointer-events: none;   
+  z-index: 1;
+}
+
+.success-overlay h6 {
+  margin: 0;
+  font-size: 15px;
+}
+
+.success-overlay p {
+  margin: 0;
+  font-size: 13px;
+}
+*/
+
+/* SECTION */
+.success-section {
+  overflow: hidden;
+   position: relative;
+  z-index: 10;
+}
+
+/* WRAPPER */
+.success-slider-wrapper {
+  position: relative;
   overflow: hidden;
   width: 100%;
 }
@@ -921,12 +1020,9 @@ transform: translateX(-50%);
   position: relative;
   min-width: 240px;
   height: 270px;
-  cursor: pointer;
   border-radius: 16px;
   overflow: hidden;
-  transition: transform 0.3s ease;
 }
-
 
 /* IMAGE */
 .success-card img {
@@ -935,7 +1031,7 @@ transform: translateX(-50%);
   object-fit: cover;
 }
 
-/* PLAY ICON */
+/* PLAY BUTTON (IMPORTANT FIX) */
 .play-icon {
   position: absolute;
   bottom: 20px;
@@ -949,6 +1045,8 @@ transform: translateX(-50%);
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 10;   /* 🔥 only this is needed */
+  cursor: pointer;
 }
 
 /* OVERLAY */
@@ -959,17 +1057,14 @@ transform: translateX(-50%);
   padding: 12px;
   background: linear-gradient(to top, rgba(193, 161, 232, 0.9), transparent);
   color: #fff;
+  pointer-events: none; /* ✅ keeps play button clickable */
 }
 
-.success-overlay h6 {
-  margin: 0;
-  font-size: 15px;
-}
 
-.success-overlay p {
-  margin: 0;
-  font-size: 13px;
-}
+
+
+
+
 
 @media (max-width: 992px) {
   .success-card {
@@ -1665,3 +1760,55 @@ line-height: 1.1;
 }
 
 
+
+
+
+
+
+
+
+
+
+
+/*modal overlay */
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999999;
+}
+
+.modal-box {
+  background: #fff;
+  padding: 15px;
+  border-radius: 16px;
+  width: 200px;
+  height: 300px;
+  text-align: center;
+}
+
+.modal-box img {
+  width: 100%;
+  border-radius: 12px;
+}
+
+.progress-bar {
+  height: 6px;
+  background: #eee;
+  border-radius: 10px;
+  margin-top: 10px;
+  overflow: hidden;
+}
+
+.progress {
+  height: 100%;
+  background: #000;
+  transition: width 0.05s linear;
+}
