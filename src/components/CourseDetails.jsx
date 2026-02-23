@@ -122,6 +122,16 @@ const CourseDetails = () => {
     <div className="progress-bar"></div>
     <span className="duration">2m</span>
   </div>
+
+
+
+
+
+
+
+
+
+
 </div>
       </div>
 <div className="border"></div>

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./EnrollModal.css";
 import PaymentStep from "./PaymentStep";
+
 const EnrollModal = ({ courseTitle, onClose }) => {
   const [step, setStep] = useState(1);
 
@@ -30,7 +31,33 @@ const EnrollModal = ({ courseTitle, onClose }) => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleNext = () => setStep(2);
+  // ✅ REQUIRED VALIDATION
+  const requiredFields = [
+    "firstName",
+    "phone",
+    "email",
+    "gender",
+    "dob",
+    "address",
+    "city",
+    "state",
+    "pincode",
+    "course",
+    "mode",
+  ];
+
+  const isFormValid = requiredFields.every(
+    (field) => formData[field] && formData[field].toString().trim() !== ""
+  );
+
+  const handleNext = () => {
+    if (!isFormValid) {
+      alert("Please fill all required (*) fields");
+      return;
+    }
+    setStep(2);
+  };
+
   const handleBack = () => setStep(1);
 
   const handleConfirm = () => {
@@ -38,7 +65,7 @@ const EnrollModal = ({ courseTitle, onClose }) => {
     setStep(3);
   };
 
-  /* LABEL MAP FOR CONFIRM STEP */
+  /* LABEL MAP */
   const labels = {
     firstName: "First Name",
     lastName: "Last Name",
@@ -72,7 +99,7 @@ const EnrollModal = ({ courseTitle, onClose }) => {
           </div>
         </div>
 
-        {/* STEP 1 – FORM */}
+        {/* STEP 1 */}
         {step === 1 && (
           <>
             <h3 className="modal-title">Enter Correct Details</h3>
@@ -81,7 +108,7 @@ const EnrollModal = ({ courseTitle, onClose }) => {
               <div className="form-grid">
 
                 <div className="form-group">
-                  <label>First Name <span>*</span></label>
+                  <label>First Name <span className="red">*</span></label>
                   <input name="firstName" value={formData.firstName} onChange={handleChange} />
                 </div>
 
@@ -91,17 +118,17 @@ const EnrollModal = ({ courseTitle, onClose }) => {
                 </div>
 
                 <div className="form-group">
-                  <label>Phone Number <span>*</span></label>
+                  <label>Phone Number <span className="red">*</span></label>
                   <input name="phone" value={formData.phone} onChange={handleChange} />
                 </div>
 
                 <div className="form-group">
-                  <label>Email Address <span>*</span></label>
+                  <label>Email Address <span className="red">*</span></label>
                   <input name="email" value={formData.email} onChange={handleChange} />
                 </div>
 
                 <div className="form-group">
-                  <label>Gender <span>*</span></label>
+                  <label>Gender <span className="red">*</span></label>
                   <select name="gender" value={formData.gender} onChange={handleChange}>
                     <option value="">Please Select</option>
                     <option>Male</option>
@@ -110,32 +137,32 @@ const EnrollModal = ({ courseTitle, onClose }) => {
                 </div>
 
                 <div className="form-group">
-                  <label>Date of Birth <span>*</span></label>
+                  <label>Date of Birth <span className="red">*</span></label>
                   <input type="date" name="dob" value={formData.dob} onChange={handleChange} />
                 </div>
 
                 <div className="form-group">
-                  <label>Address <span>*</span></label>
+                  <label>Address <span className="red">*</span></label>
                   <input name="address" value={formData.address} onChange={handleChange} />
                 </div>
 
                 <div className="form-group">
-                  <label>City <span>*</span></label>
+                  <label>City <span className="red">*</span></label>
                   <input name="city" value={formData.city} onChange={handleChange} />
                 </div>
 
                 <div className="form-group">
-                  <label>State <span>*</span></label>
+                  <label>State <span className="red">*</span></label>
                   <input name="state" value={formData.state} onChange={handleChange} />
                 </div>
 
                 <div className="form-group">
-                  <label>Pincode <span>*</span></label>
+                  <label>Pincode <span className="red">*</span></label>
                   <input name="pincode" value={formData.pincode} onChange={handleChange} />
                 </div>
 
                 <div className="form-group">
-                  <label>Select Course <span>*</span></label>
+                  <label>Select Course <span className="red">*</span></label>
                   <select name="course" value={formData.course} onChange={handleChange}>
                     <option value="">Please Select</option>
                     <option>Python Full Stack Development</option>
@@ -145,7 +172,7 @@ const EnrollModal = ({ courseTitle, onClose }) => {
                 </div>
 
                 <div className="form-group">
-                  <label>Available Mode <span>*</span></label>
+                  <label>Available Mode <span className="red">*</span></label>
                   <select name="mode" value={formData.mode} onChange={handleChange}>
                     <option value="">Please Select</option>
                     <option>Offline</option>
@@ -160,12 +187,20 @@ const EnrollModal = ({ courseTitle, onClose }) => {
 
               </div>
 
-              <button className="submit-btn" onClick={handleNext}>Submit</button>
+              {/* ✅ DISABLED BUTTON */}
+              <button
+                className="submit-btn"
+                onClick={handleNext}
+                disabled={!isFormValid}
+              >
+                Submit
+              </button>
+
             </div>
           </>
         )}
 
-        {/* STEP 2 – CONFIRM */}
+        {/* STEP 2 */}
         {step === 2 && (
           <div className="step-content confirm-details">
             <h3 className="confirm-title">Please Confirm Your Details</h3>
@@ -189,7 +224,7 @@ const EnrollModal = ({ courseTitle, onClose }) => {
           </div>
         )}
 
-        {/* STEP 3 – PAYMENT */}
+        {/* STEP 3 */}
         {step === 3 && <PaymentStep />}
 
       </div>

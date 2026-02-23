@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./PaymentStep.css";
+import { useNavigate } from "react-router-dom";
 
 const BASE_URL = "http://127.0.0.1:8000";
 
@@ -9,6 +10,7 @@ const PaymentStep = () => {
   const [selected, setSelected] = useState("");
   const [upi, setUpi] = useState("");
   const [showSuccess, setShowSuccess] = useState(false); // ✅ FIXED POSITION
+  const navigate = useNavigate();
 
   useEffect(() => {
     axios.get(`${BASE_URL}/api/payment-methods/`)
@@ -143,8 +145,15 @@ const PaymentStep = () => {
         <div className="payment-modal">
           <div className="payment-modal-content">
 
-            <span className="close-btn" onClick={() => setShowSuccess(false)}>✕</span>
-
+            <span
+  className="close-btn"
+  onClick={() => {
+    setShowSuccess(false);
+    navigate("/");
+  }}
+>
+  ✕
+</span>
             <div className="success-icon">✔</div>
 
             <h2>Payment Completed</h2>
