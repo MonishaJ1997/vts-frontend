@@ -11,7 +11,7 @@ import EnrollModal from "./EnrollModal";
 
 
 const Home = () => {
-  const BASE_URL = "http://127.0.0.1:8000";
+  const BASE_URL = "https://vts-backend-wky4.onrender.com";
 const navigate = useNavigate();
 
 const [loading, setLoading] = useState(true);
