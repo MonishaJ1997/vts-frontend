@@ -234,7 +234,7 @@ axios
       })
       .catch((err) => console.log(err));
 
-axios.get("http://127.0.0.1:8000/api/storyrole/")
+axios.get(`${BASE_URL}/api/storyrole/`)
     .then(res => {
       console.log("DATA:", res.data);
       setStoryRoles(res.data);
