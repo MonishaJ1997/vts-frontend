@@ -21,13 +21,16 @@ const Header = () => {
   const [displayedWords, setDisplayedWords] = useState([]);
   const [wordIndex, setWordIndex] = useState(0);
 const course = { title: "React Course" };
-  useEffect(() => {
-    // Fetch logo
-    axios
-      .get(`${BASE_URL}/logo/`)
-      .then((res) => setLogo(res.data.logo))
-      .catch((err) => console.error("Error fetching logo:", err));
 
+
+  useEffect(() => {
+  axios
+    .get(`${BASE_URL}/logo/`)
+    .then((res) => setLogo(res.data.logo))
+    .catch((err) => console.error("Error fetching logo:", err));
+}, []);
+  
+useEffect(() => {
     // Announcement word-by-word loop animation
     const interval = setInterval(() => {
       setDisplayedWords(words.slice(0, wordIndex + 1));
