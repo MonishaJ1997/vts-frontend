@@ -86,9 +86,12 @@ useEffect(() => {
     setWhyChoose(parsed.whyChoose);
     setHowSection(parsed.howSection);
     setCourses(parsed.courses);
+    setHowSteps(parsed.howSteps);
     setProjects(parsed.projects);
     setSuccessStories(parsed.successStories);
     setStoryRoles(parsed.storyRoles);
+    setEcosystem(parsed.ecosystemed);
+    setMen(parsed.men);
     return;
   }
 
@@ -101,9 +104,12 @@ useEffect(() => {
     axios.get(`${BASE_URL}/api/featured-courses/`),
     axios.get(`${BASE_URL}/api/student-projects/`),
     axios.get(`${BASE_URL}/api/success-stories/`),
-    axios.get(`${BASE_URL}/api/storyrole/`)
+    axios.get(`${BASE_URL}/api/storyrole/`),
+    axios.get(`${BASE_URL}/api/ecosystemed/`),      // ✅ add
+  axios.get(`${BASE_URL}/api/career-men/`)
   ])
-    .then(([hero, about, why, how, courses, projects, stories, roles]) => {
+    .then(([hero, about, why, how, courses, projects, stories, roles, ecosystem,
+        men]) => {
       setHero(hero.data);
       setAbout(about.data);
       setWhyChoose(why.data);
@@ -112,6 +118,8 @@ useEffect(() => {
       setProjects(projects.data);
       setSuccessStories(stories.data);
       setStoryRoles(roles.data);
+       setEcosystem(ecosystem.data);
+        setMen(men.data[0]);
 
       sessionStorage.setItem("homeData", JSON.stringify({
         hero: hero.data,
@@ -121,7 +129,9 @@ useEffect(() => {
         courses: courses.data,
         projects: projects.data,
         successStories: stories.data,
-        storyRoles: roles.data
+        storyRoles: roles.data,
+        ecosystemed: ecosystem.data,
+          men: men.data[0]
       }));
     })
     .catch(err => console.log(err));
@@ -187,62 +197,7 @@ const nextSlide = () => {
 };
 
   // ================== FETCH DATA ==================
-  useEffect(() => {
-    axios.get(`${BASE_URL}/website-content/`)
-      .then(res => setHero(res.data))
-      .catch(err => console.log("Hero Error:", err));
-
-    axios.get(`${BASE_URL}/about-content/`)
-      .then(res => setAbout(res.data))
-      .catch(err => console.log("About Error:", err));
-
-    axios.get(`${BASE_URL}/why-choose-us/`)
-      .then(res => setWhyChoose(res.data))
-      .catch(err => console.log("Why Choose Error:", err));
-     axios.get(`${BASE_URL}/api/ecosystemed/`)
-      .then(res => {
-        setEcosystem(res.data);
-      })
-      .catch(err => console.log(err));
-    axios.get(`${BASE_URL}/api/how-it-works/`)
-      .then(res => {
-        setHowSection(res.data.section);
-        setHowSteps(res.data.steps || []);
-      })
-      .catch(err => console.log("How It Works Error:", err));
-
-    axios.get(`${BASE_URL}/api/featured-courses/`)
-      .then(res => setCourses(res.data || []))
-      .catch(err => console.log("Featured Courses Error:", err));
-
-    axios.get(`${BASE_URL}/api/student-projects/`)
-      .then(res => setProjects(res.data || []))
-      .catch(err => console.log("Student Projects Error:", err));
-
-    axios.get(`${BASE_URL}/api/success-stories/`)
-      .then(res => {
-        console.log("Success Stories Data:", res.data);
-        setSuccessStories(res.data || []);
-      })
-      .catch(err => console.log("Success Stories Error:", err));
-
-
-axios
-      .get(`${BASE_URL}/api/career-men/`)
-      .then((res) => {
-        if (res.data.length > 0) setMen(res.data[0]); // first person only
-      })
-      .catch((err) => console.log(err));
-
-axios.get(`${BASE_URL}/api/storyrole/`)
-    .then(res => {
-      console.log("DATA:", res.data);
-      setStoryRoles(res.data);
-    })
-    .catch(err => console.log(err));
-
-  }, []);
-
+ 
   // ================== PROJECT CAROUSEL LOGIC ==================
   const getIndex = (offset) => {
     if (projects.length === 0) return 0;
