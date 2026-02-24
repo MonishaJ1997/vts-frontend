@@ -86,7 +86,7 @@ useEffect(() => {
     setWhyChoose(parsed.whyChoose);
     setHowSection(parsed.howSection);
     setCourses(parsed.courses);
-    setHowSteps(parsed.howSteps);
+    setHowSteps(parsed.howSteps || []);
     setProjects(parsed.projects);
     setSuccessStories(parsed.successStories);
     setStoryRoles(parsed.storyRoles);
@@ -128,6 +128,7 @@ useEffect(() => {
         howSection: how.data.section,
         courses: courses.data,
         projects: projects.data,
+        howSteps: how.data.steps || [],
         successStories: stories.data,
         storyRoles: roles.data,
         ecosystemed: ecosystem.data,
@@ -374,7 +375,7 @@ if (!hero || !about || !whyChoose || !howSection) {
 
             {/* RIGHT CARDS */}
             <div className="ecos-right">
-              {ecosystemed.items.map((item, index) => (
+              {ecosystemed?.items?.map((item, index) => (
                 <div className="ecos-card" key={index}>
 
                   <img
@@ -424,7 +425,7 @@ if (!hero || !about || !whyChoose || !howSection) {
           <img src={howSection.student_image} alt="Student" className="student-img" />
         )}
         <div className="row g-4 mt-4">
-          {howSteps.map((step) => (
+         {howSteps?.map((step) => (
             <div className="col-xl-3 col-lg-6 col-md-6 col-12" key={step.id}>
               <div className="step-card" style={{ background: step.card_bg_color }}>
                 {step.icon_image && <img src={step.icon_image} alt={step.title} className="step-icon" />}
@@ -453,7 +454,7 @@ if (!hero || !about || !whyChoose || !howSection) {
           Choose from our most popular industry-aligned programs
         </p>
         <div className="row g-4 mt-4">
-          {courses.map(course => (
+         {courses?.map(course => (
             <div className="col-lg-4 col-md-6 col-12" key={course.id}>
               <div className="course-card">
                 <img src={course.image} className="course-image" alt={course.title} />
