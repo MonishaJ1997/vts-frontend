@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./About.css";
 import Impact from "./Impact";
+import { useNavigate } from "react-router-dom";
 const About = () => {
   const [aboutImage, setAboutImage] = useState(null);
   const [mvData, setMvData] = useState([]);
@@ -12,6 +13,7 @@ const About = () => {
   const [currentStep, setCurrentStep] = useState(0);
   const [items, setItems] = useState([]);
   const [person, setPerson] = useState(null);
+  const navigate = useNavigate();
 
 
 
@@ -471,7 +473,7 @@ useEffect(() => {
       Direct placement support and interview opportunities at our
       integrated IT startup ecosystem. Start your career with confidence!
     </p>
-    <button>Get Free Consultation Now</button>
+    <button  onClick={() => navigate("/contact")}>Get Free Consultation Now</button>
   </div>
 </div>
     </div>

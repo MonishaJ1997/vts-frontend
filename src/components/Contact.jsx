@@ -84,7 +84,7 @@ const Contact = () => {
         <div className="left">
           <h2>Get in Touch with our Experts</h2>
           <p>Have questions? We're here to help you start your learning journey</p>
-          <button className="consult-btn">Free Consultation</button>
+          <button className="consult-btn"  onClick={() => navigate("/contact")}>Free Consultation</button>
         </div>
 
  <form className="form-card" onSubmit={handleSubmit}>

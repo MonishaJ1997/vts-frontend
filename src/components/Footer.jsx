@@ -2,8 +2,12 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./Footer.css";
 import '@fortawesome/fontawesome-free/css/all.min.css';
+import { useNavigate } from "react-router-dom";
 const Footer = () => {
   const [logo, setLogo] = useState("");
+   
+ const navigate = useNavigate();
+
 const BASE_URL = "http://127.0.0.1:8000";
   useEffect(() => {
     axios
@@ -24,7 +28,7 @@ const BASE_URL = "http://127.0.0.1:8000";
             <img
               src={`${BASE_URL}${logo}`}
               alt="logo"
-              className="footer-logo"
+              className="footer-logo" onClick={() => navigate("/")}
             />
           )}
           <h4>Address</h4>

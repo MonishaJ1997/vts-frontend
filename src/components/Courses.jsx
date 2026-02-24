@@ -5,14 +5,15 @@ import { MdSchool } from "react-icons/md";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Courses.css";
 import { useNavigate } from "react-router-dom"; 
-
+import EnrollModal from "./EnrollModal";
 const Courses = () => {
 
   const BASE_URL = "http://127.0.0.1:8000";
 
   const [courses, setCourses] = useState([]);
   const [activeCategory, setActiveCategory] = useState("All");
-
+const [showModal, setShowModal] = useState(false);
+const course = { title: "React Course" };
   const navigate = useNavigate(); // ✅ Initialize navigate here
 
   const categories = [
@@ -47,7 +48,8 @@ const Courses = () => {
     
   </div>
 
-  <button className="consult-btn">Free Consultation</button>
+  <button className="consult-btn" onClick={() => navigate("/contact")}
+  >Free Consultation</button>
 </div>
 
       {/* Category Filter */}
@@ -99,7 +101,8 @@ const Courses = () => {
                   >
                     View Details
                   </button>
-                  <button className="btn-primary-custom">
+                  <button className="btn-primary-custom"
+                  onClick={() => setShowModal(true)}>
                     Enroll Now
                   </button>
                 </div>
@@ -109,7 +112,13 @@ const Courses = () => {
           </div>
         ))}
       </div>
-
+ {/* ENROLL MODAL */}
+      {showModal && (
+        <EnrollModal
+          courseTitle={course.title}
+          onClose={() => setShowModal(false)}
+        />
+      )}
     </section>
   );
 };

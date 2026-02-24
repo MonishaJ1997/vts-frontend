@@ -5,7 +5,7 @@ import "./Home.css";
 import { FaCalendarAlt } from "react-icons/fa";
 import { MdSchool } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
-
+import EnrollModal from "./EnrollModal";
 
 
 
@@ -38,8 +38,8 @@ const [progress, setProgress] = useState(0);
 const [storyRoles, setStoryRoles] = useState([]);
 const [currentImageIndex, setCurrentImageIndex] = useState(0);
 // Open modal
-
-
+ const [showModal, setShowModal] = useState(false);
+const course = { title: "React Course" };
 const openModal = (story) => {
   console.log("CLICKED:", story);
 
@@ -323,7 +323,8 @@ if (!hero || !about || !whyChoose || !howSection) {
       >
         View Training Program
       </button>
-            <button className="secondary-btn">Free Consultation</button>
+            <button className="secondary-btn"
+             onClick={() => navigate("/contact")}>Free Consultation</button>
           </div>
         </div>
       </section>
@@ -361,7 +362,8 @@ if (!hero || !about || !whyChoose || !howSection) {
           <div className="about-content">
             <h4>{about.title}</h4>
             <p>{about.description}</p>
-            <button className="learn-btn">Learn More</button>
+            <button className="learn-btn"
+           onClick={() => navigate("/about")} >Learn More</button>
           </div>
         </div>
       </section>
@@ -514,8 +516,10 @@ if (!hero || !about || !whyChoose || !howSection) {
                   </div>
                   <p className="course-desc">{course.description}</p>
                   <div className="course-buttons">
-                    <button className="btn-outline-custom">View Details</button>
-                    <button className="btn-primary-custom">Enroll Now</button>
+                    <button className="btn-outline-custom"
+                  onClick={() => navigate(`/course/${course.id}`)}  >View Details</button>
+                    <button className="btn-primary-custom"
+                    onClick={() => setShowModal(true)}>Enroll Now</button>
                   </div>
 
                 </div>
@@ -523,8 +527,16 @@ if (!hero || !about || !whyChoose || !howSection) {
               </div>
               
             </div>
-            
+      
           ))}
+
+           {/* ENROLL MODAL */}
+      {showModal && (
+        <EnrollModal
+          courseTitle={course.title}
+          onClose={() => setShowModal(false)}
+        />
+      )}
         </div>
       </section>
 
@@ -641,7 +653,7 @@ if (!hero || !about || !whyChoose || !howSection) {
       </div>
 
     </div>
-    <button className="showcase-btn"> View Showcase</button>
+    <button className="showcase-btn"onClick={() => navigate("/about")}> View Showcase</button>
   </section>
 )
 }
@@ -800,7 +812,7 @@ if (!hero || !about || !whyChoose || !howSection) {
       Get expert guidance,structured training,and 
       real-world skills that prepare you for career success.
     </p>
-    <button>Get Free Consultation </button>
+    <button onClick={() => navigate("/contact")}>Get Free Consultation </button>
   </div>
 </div>
     </div>

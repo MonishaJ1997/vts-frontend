@@ -11,7 +11,7 @@ const CourseDetails = () => {
   const [course, setCourse] = useState(null);
   const [error, setError] = useState(null);
   const [showModal, setShowModal] = useState(false);
-
+  
   useEffect(() => {
     axios
       .get(`${BASE_URL}/api/courses/${id}/`)
@@ -85,7 +85,18 @@ const CourseDetails = () => {
             <button className="enroll-btns" onClick={() => setShowModal(true)}>
               Enroll Now
             </button>
-            <button className="download-btn">Download Brochure</button>
+
+           {/* <button className="download-btn">Download Brochure</button>*/}
+<a
+  href="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
+  target="_blank"
+  rel="noopener noreferrer"
+  download
+  className="download-btn"
+>
+  Download Brochure
+</a>
+
           </div>
         </div>
 
