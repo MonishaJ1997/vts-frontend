@@ -6,7 +6,7 @@ import "./CourseDetails.css";
 
 const CourseDetails = () => {
   const { id } = useParams();
-  const BASE_URL = "http://127.0.0.1:8000";
+  const BASE_URL = "https://vts-backend-wky4.onrender.com";
 
   const [course, setCourse] = useState(null);
   const [error, setError] = useState(null);
