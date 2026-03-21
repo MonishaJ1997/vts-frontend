@@ -371,7 +371,19 @@ background-color: #da9931;
   outline: none !important;
   box-shadow: none !important;
 }
+@media (max-width: 768px) {
+  .course-buttons {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
 
+  .btn-outline-custom,
+  .btn-primary-custom {
+    width: 80%;
+    text-align: center;
+  }
+}
 
 /* ===================== SECTION ===================== *
 .featured-wrapper {
@@ -530,3 +542,17 @@ background-color: #da9931;
 }
 
 /* ===================== MEDIA QUERIES ===================== */
+.download-brochure,
+.download-brochure a {
+  text-decoration: none !important;
+  border-bottom: none !important;
+}
+a {
+  text-decoration: none !important;
+}
+
+button,
+.btn,
+a {
+  text-decoration: none !important;
+}

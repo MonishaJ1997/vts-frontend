@@ -41,16 +41,16 @@ const BASE_URL = "http://127.0.0.1:8000";
         {/* Quick Links */}
         <div className="footer-col">
           <h4>Quick Links</h4>
-          <p>About Us</p>
-          <p>Contact Us</p>
-          <p>Courses</p>
+          <p onClick={() => navigate("/about")}>About Us</p>
+          <p onClick={() => navigate("/contact")}>Contact Us</p>
+          <p onClick={() => navigate("/courses")}>Courses</p>
         </div>
 
         {/* Support */}
         <div className="footer-col">
           <h4>Support</h4>
-          <p>Terms & Conditions</p>
-          <p>Privacy Policy</p>
+          <p onClick={() => navigate("/terms")}>Terms & Conditions</p>
+          <p onClick={() => navigate("/privacy")}>Privacy Policy</p>
         </div>
 
         {/* Network */}

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./Contact.css";
 import {
@@ -12,6 +13,7 @@ const Contact = () => {
   const [map, setMap] = useState("");
   const [images, setImages] = useState([]);
   const BASE_URL = "http://127.0.0.1:8000";
+  const navigate = useNavigate();
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -46,22 +48,45 @@ const Contact = () => {
   }, []);
 
   // ✅ VALIDATION
-  const validate = () => {
-    let err = {};
+ const validate = () => {
+  let err = {};
 
-    if (!form.name.trim()) err.name = "Full name is required";
-    if (!form.email.match(/^\S+@\S+\.\S+$/))
-      err.email = "Enter valid email";
-    if (!form.phone.match(/^[6-9]\d{9}$/))
-      err.phone = "Enter valid mobile";
-    if (!form.course) err.course = "Select a course";
-    if (!form.message.trim())
-      err.message = "Message is required";
+  // ✅ Name: only letters and spaces
+  if (!form.name.trim()) {
+    err.name = "Full name is required";
+  } else if (!/^[A-Za-z\s]+$/.test(form.name)) {
+    err.name = "Name should contain only letters";
+  }
 
-    setErrors(err);
-    return Object.keys(err).length === 0;
-  };
+  // ✅ Email: strict validation
+  if (!form.email.trim()) {
+    err.email = "Email is required";
+  } else if (
+    !/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(form.email)
+  ) {
+    err.email = "Enter a valid email address";
+  }
 
+  // ✅ Phone: starts 6-9 + 10 digits
+  if (!form.phone.trim()) {
+    err.phone = "Phone number is required";
+  } else if (!/^[6-9]\d{9}$/.test(form.phone)) {
+    err.phone = "Phone must start with 6-9 and be 10 digits";
+  }
+
+  // ✅ Course
+  if (!form.course) {
+    err.course = "Select a course";
+  }
+
+  // ✅ Message
+  if (!form.message.trim()) {
+    err.message = "Message is required";
+  }
+
+  setErrors(err);
+  return Object.keys(err).length === 0;
+};
   // ✅ SUBMIT
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -84,7 +109,7 @@ const Contact = () => {
         <div className="left">
           <h2>Get in Touch with our Experts</h2>
           <p>Have questions? We're here to help you start your learning journey</p>
-          <button className="consult-btn"  onClick={() => navigate("/contact")}>Free Consultation</button>
+          <button className="consult-btn"  onClick={() => navigate("/courses")}>Free Consultation</button>
         </div>
 
  <form className="form-card" onSubmit={handleSubmit}>
@@ -227,7 +252,12 @@ const Contact = () => {
       <div className="learning-section">
         <div className="learning-header">
           <h3>Our Learning Environment</h3>
-          <button className="view-btn">View all →</button>
+           <button
+      className="view-btn"
+      onClick={() => navigate("/about")}
+    >
+      View all →
+    </button>
         </div>
 
         <div className="learning-grid">

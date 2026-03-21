@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import EnrollModal from "./EnrollModal";
 import "./CourseDetails.css";
 
+
 const CourseDetails = () => {
   const { id } = useParams();
   const BASE_URL = "http://127.0.0.1:8000";
@@ -11,7 +12,14 @@ const CourseDetails = () => {
   const [course, setCourse] = useState(null);
   const [error, setError] = useState(null);
   const [showModal, setShowModal] = useState(false);
-  
+  const handleDownload = () => {
+  const link = document.createElement("a");
+  link.href = "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf";
+  link.download = "brochure.pdf"; // file name
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+};
   useEffect(() => {
     axios
       .get(`${BASE_URL}/api/courses/${id}/`)
@@ -88,10 +96,7 @@ const CourseDetails = () => {
 
            {/* <button className="download-btn">Download Brochure</button>*/}
 <a
-  href="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
-  target="_blank"
-  rel="noopener noreferrer"
-  download
+  href={`${BASE_URL}/api/download-brochure/${course.id}/`}
   className="download-btn"
 >
   Download Brochure
@@ -114,11 +119,11 @@ const CourseDetails = () => {
  <div className="right-video">
   <div className="video-card">
 
-    <img
-      src={course.video_thumbnail}
-      alt={course.title}
-      className="video-thumb"
-    />
+ <img
+  src="/video_image.png"
+  alt={course.title}
+  className="video-thumb"
+/>
 
     {/* CENTER TRANSPARENT BOX */}
     <div className="video-overlay-box">

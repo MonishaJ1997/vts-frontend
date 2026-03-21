@@ -47,36 +47,32 @@ const course = { title: "React Course" };
 
   // ================= Handle Search =================
   const handleSearch = (e) => {
-    e.preventDefault();
-    if (query.trim() !== "") {
-      const lowerQuery = query.trim().toLowerCase();
+  e.preventDefault();
+  if (!query.trim()) return;
 
-      // Redirect to particular pages
-      switch (lowerQuery) {
-        case "home":
-          navigate("/");
-          break;
-        case "courses":
-          navigate("/courses");
-          break;
-        case "about":
-        case "about us":
-          navigate("/about");
-          break;
-        case "contact":
-        case "contact us":
-          navigate("/contact");
-          break;
-        default:
-          alert(`No page found for "${query}"`);
-          break;
-      }
+  const lowerQuery = query.trim().toLowerCase();
 
-      setQuery(""); // clear search input
-      if (menuOpen) setMenuOpen(false); // close mobile menu
-    }
-  };
+  // Define keyword lists for each page
+  const coursesKeywords = ["course", "courses", "python", "react", "full stack", "java", "node", "web development","software","backend","ui/ux","data science","frontend course"];
+  const aboutKeywords = ["about", "about us", "who we are"];
+  const contactKeywords = ["contact", "contact us", "reach"];
 
+  // Check which page the query matches
+  if (coursesKeywords.some((kw) => lowerQuery.includes(kw))) {
+    navigate("/courses");
+  } else if (aboutKeywords.some((kw) => lowerQuery.includes(kw))) {
+    navigate("/about");
+  } else if (contactKeywords.some((kw) => lowerQuery.includes(kw))) {
+    navigate("/contact");
+  } else if (lowerQuery.includes("home")) {
+    navigate("/");
+  } else {
+    alert(`No page found for "${query}"`);
+  }
+
+  setQuery(""); // clear input
+  if (menuOpen) setMenuOpen(false); // close mobile menu on mobile
+};
   return (
     <>
       {/* Top Bar */}

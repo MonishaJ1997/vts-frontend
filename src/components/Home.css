@@ -103,7 +103,24 @@
   
   color: #ff9800;
 }
+@media (max-width: 768px) {
+  .hero-buttons {
+    width: 50%;
+    margin: 25px auto 0; /* centers the container */
+    justify-content: center; /* center buttons inside */
+  }
 
+  .primary-btn,
+  .secondary-btn {
+    width: 100%; /* both buttons take full width inside 60% container */
+    text-align: center;
+  }
+
+  .hero-buttons {
+    flex-direction: column; /* stack vertically */
+    gap: 15px;
+  }
+}
 /* ===== STATS BAR ===== */
 
 .stats-box {
@@ -357,7 +374,7 @@
   color: #555;
 }
 
-/* howItWorks.css */
+/* howItWorks.css 
 
 .how-wrapper {
   position: relative;
@@ -450,8 +467,286 @@
     margin-bottom: 20px;
   }
 }
+*/
+/* ================= WRAPPER ================= */
+/* ================= WRAPPER ================= */
 
+.how-wrapper {
+  position: relative;
+  overflow: visible;
+}
 
+/* ================= TITLE ================= */
+
+.main-title {
+  text-align: center;
+  font-weight: 700;
+  font-size: 22px;
+}
+
+.sub-title {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* ================= TOP LINE ================= */
+
+.top-line {
+  width: 70%;
+  height: 6px;
+  margin: 20px auto 40px;
+  border-radius: 50px;
+  background: linear-gradient(90deg, #7b2cbf, #ff9f1c);
+}
+
+/* ================= BOY IMAGE ================= */
+
+.student-img {
+  position: absolute;
+  right: -10px;
+  top: -60px;
+  width: 160px;
+  z-index: 5;
+}
+
+/* ================= FLOW WRAPPER ================= */
+
+.flow-wrapper {
+  position: relative;
+  padding: 20px 20px;
+}
+
+/* ================= FRAME LINES ================= */
+
+.frame-line {
+  position: absolute;
+  background: linear-gradient(90deg, #ff9f1c, #7b2cbf);
+  z-index: 0;
+}
+
+/* TOP & BOTTOM */
+
+.frame-bottom {
+  height: 2px;
+  width: 100%;
+  left: 0;
+}
+.frame-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 6px; /* base thin line */
+
+  background: linear-gradient(
+    90deg,
+    rgba(255,159,28,0.4) 0%,
+    rgba(123,44,191,0.4) 25%,
+    rgba(123,44,191,1) 50%,
+    rgba(123,44,191,0.4) 75%,
+    rgba(255,159,28,0.4) 100%
+  );
+}
+.frame-top::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: -4px;
+
+  width: 50%; /* center bold area */
+  height: 12px; /* thicker */
+
+  background: linear-gradient(90deg, #ff9f1c, #7b2cbf);
+  
+}
+.frame-top {
+  top: 0;
+}
+
+.frame-bottom {
+  bottom: 0;
+}
+
+/* LEFT & RIGHT */
+.frame-left,
+.frame-right {
+  width: 4px;
+  height: 100%;
+  top: 0;
+}
+
+.frame-left {
+  left: 0;
+}
+
+.frame-right {
+  right: 0;
+}
+
+/* ================= THICK CORNERS ================= */
+
+.corner {
+  position: absolute;
+  width: 135px;
+  height: 135px;
+  border: 15px solid;
+  border-image: linear-gradient(45deg, #ff9f1c, #7b2cbf) 1;
+  z-index: 1;
+}
+
+.corner-tl {
+  top: 0;
+  left: 0;
+  border-right: none;
+  border-bottom: none;
+}
+
+.corner-tr {
+  top: 0;
+  right: 0;
+  border-left: none;
+  border-bottom: none;
+}
+
+.corner-bl {
+  bottom: 0;
+  left: 0;
+  border-right: none;
+  border-top: none;
+}
+
+.corner-br {
+  bottom: 0;
+  right: 0;
+  border-left: none;
+  border-top: none;
+}
+
+/* ================= CARD ================= */
+
+.step-card {
+  width: 200px;
+  height: 250px;
+  padding: 20px;
+  
+  text-align: center;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+  position: relative;
+  z-index: 2;
+  transition: 0.3s;
+}
+
+.step-card:hover {
+  transform: translateY(-8px);
+}
+
+/* ICON */
+
+.step-icon {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+}
+
+/* NUMBER */
+
+.step-number {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background: #6a1b9a;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 15px auto;
+  font-weight: bold;
+}
+
+.step-card h5,
+.step-card p {
+  text-align: left;
+  width: 100%;
+}
+.step-col {
+  display: flex;
+  justify-content: center;
+}
+.frame-top {
+  height: 6px;
+  width: 100%;
+  top: 0;
+
+  background: linear-gradient(90deg, #ff9f1c, #7b2cbf, #ff9f1c);
+  background-size: 200% 100%;
+
+  animation: moveTop 3s linear infinite;
+}
+.frame-right {
+  width: 4px;
+  height: 100%;
+  right: 0;
+
+  background: linear-gradient(180deg, #ff9f1c, #7b2cbf, #ff9f1c);
+  background-size: 100% 200%;
+
+  animation: moveRight 3s linear infinite;
+}
+.frame-bottom {
+  height: 4px;
+  width: 100%;
+  bottom: 0;
+
+  background: linear-gradient(270deg, #ff9f1c, #7b2cbf, #ff9f1c);
+  background-size: 200% 100%;
+
+  animation: moveBottom 3s linear infinite;
+}
+.frame-left {
+  width: 4px;
+  height: 100%;
+  left: 0;
+
+  background: linear-gradient(0deg, #ff9f1c, #7b2cbf, #ff9f1c);
+  background-size: 100% 200%;
+
+  animation: moveLeft 3s linear infinite;
+}
+
+@keyframes moveTop {
+  0% { background-position: 0% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes moveRight {
+  0% { background-position: 0% 0; }
+  100% { background-position: 0% 200%; }
+}
+
+@keyframes moveBottom {
+  0% { background-position: 200% 0; }
+  100% { background-position: 0% 0; }
+}
+
+@keyframes moveLeft {
+  0% { background-position: 0% 200%; }
+  100% { background-position: 0% 0; }
+}
+
+@keyframes moveCenter {
+  0% { left: -30%; }
+  100% { left: 100%; }
+}
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 992px) {
+  .student-img {
+    position: static;
+    display: block;
+    margin: auto;
+  }
+}
 :root {
   --primary: #6621BA;
   --secondary: #FF9C00;
@@ -724,6 +1019,9 @@
 }
 
 /* ================== CAROUSEL ================== */
+/* ================== CAROUSEL ================== */
+
+/* ================== CAROUSEL ================== */
 .fixed-carousel {
   display: flex;
   justify-content: center;
@@ -735,26 +1033,30 @@
 .carousel-card {
   position: relative;
   width: 360px;
-  height: 250px;
   border-radius: 20px;
-  overflow: hidden;
   cursor: pointer;
   background: #fff;
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
   transition: all 0.5s ease;
+  overflow: hidden;
 }
 
-/* IMAGE */
+/* ================== IMAGE ================== */
 .carousel-card img {
   width: 100%;
-  height: 100%;
   object-fit: cover;
 }
 
-/* ================== CENTER ================== */
+/* ================== CENTER CARD ================== */
 .carousel-card.center {
+  height: 260px; /* FULL IMAGE HEIGHT */
   transform: scale(1.15);
   z-index: 5;
+}
+
+/* CENTER IMAGE FULL COVER */
+.carousel-card.center img {
+  height: 100%;
 }
 
 /* DARK OVERLAY */
@@ -765,7 +1067,7 @@
   background: linear-gradient(to top, rgba(0,0,0,0.75), transparent);
 }
 
-/* CENTER TEXT */
+/* TEXT INSIDE IMAGE */
 .carousel-card.center .project-info {
   position: absolute;
   bottom: 20px;
@@ -773,58 +1075,115 @@
   right: 20px;
   color: #fff;
   z-index: 2;
-  text-align: left;
 }
 
 /* ================== LEFT & RIGHT ================== */
 .carousel-card.left,
 .carousel-card.right {
   transform: scale(0.85);
-  opacity: 0.8;
+  opacity: 0.85;
 }
 
-/* WHITE PANEL */
-.carousel-card.left::after,
-.carousel-card.right::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: 95px;
-  background: #fff;
-  border-radius: 0 0 20px 20px;
-  z-index: 1;
+/* IMAGE HEIGHT FOR SIDE CARDS */
+.carousel-card.left img,
+.carousel-card.right img {
+  height: 200px;
 }
 
-/* TEXT ON WHITE PANEL */
+/* TEXT BELOW IMAGE */
 .carousel-card.left .project-info,
 .carousel-card.right .project-info {
-  position: absolute;
-  bottom: 12px;
-  left: 15px;
-  right: 15px;
-  z-index: 2;
+  padding: 15px;
+  background: #fff;
   color: #222;
-  text-align: left;
+  position: relative;
 }
+
+/* REMOVE OLD WHITE OVERLAY */
+.carousel-card.left::after,
+.carousel-card.right::after {
+  display: none;
+}
+
+/* ================== TEXT STYLE ================== */
+.project-info h5 {
+  font-size: 17px;
+  font-weight: 900;
+  margin-bottom: 5px;
+}
+
+.student-role {
+  font-size: 16px;
+  color:black;
+  display: block;
+}
+.student-roles{
+  font-size: 16px;
+  color: white;
+  display: block;
+}
+.student-name {
+  font-size: 18px;
+  color: white;
+   margin-top: 5px;
+  margin-left: -250px;
+}
+.student-names{
+  font-size: 18px;
+  color: black;
+   margin-top: 5px;
+  margin-left: -250px;
+}
+/* ================== BUTTON ================== */
 .showcase-btn {
-  position: absolute;
-  
-  
-transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  margin: 40px auto 0;
   background: #f69d18;
   color: #fff;
   border: none;
-  padding: 10px 32px;
+  padding: 12px 20px;
   border-radius: 10px;
   font-size: 16px;
   cursor: pointer;
 
   box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+  transition: 0.3s;
 }
-.showcase-btn:hover{
-  background-color: #ff9800;
+
+/* SMALL BOX AROUND ICON */
+.icon-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+ 
+ background:#f69d18 ;
+  color: white;
+
+  border-radius: 6px;
+  font-size: 14px;
 }
+
+/* HOVER EFFECT 🔥 */
+.showcase-btn:hover {
+  background-color: #b17e2c;
+}
+
+.showcase-btn:hover .icon-box {
+  transform: translateX(4px);
+  transition: 0.3s;
+}
+
+.top-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 /* ================== TEXT ================== */
 
 /* ROW */
@@ -1479,7 +1838,22 @@ line-height: 1.1;
   
   color: #ff9800;
 }
+.careers-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
 
+  background-image:
+    radial-gradient(circle at 15% 25%, rgba(255,255,255,0.25) 14px, transparent 18px),
+    radial-gradient(circle at 30% 65%, rgba(255,255,255,0.22) 16px, transparent 20px),
+    radial-gradient(circle at 50% 35%, rgba(255,255,255,0.2) 15px, transparent 19px),
+    radial-gradient(circle at 65% 75%, rgba(255,255,255,0.25) 18px, transparent 22px),
+    radial-gradient(circle at 80% 30%, rgba(255,255,255,0.2) 16px, transparent 20px),
+    radial-gradient(circle at 90% 70%, rgba(255,255,255,0.25) 18px, transparent 22px);
+
+  opacity: 0.7;
+}
 /* ================= RESPONSIVE ================= */
 @media (max-width: 992px) {
   .careers-card {
@@ -1771,44 +2145,56 @@ line-height: 1.1;
 
 
 /*modal overlay */
-
+/* OVERLAY */
 .modal-overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.6);
+  background: rgba(0,0,0,0.7);
+
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 999999;
+  z-index: 999;
 }
 
+/* BOX */
 .modal-box {
+  position: relative;
+  width: 500px;
   background: #fff;
-  padding: 15px;
-  border-radius: 16px;
-  width: 200px;
-  height: 300px;
-  text-align: center;
+  border-radius: 15px;
+  padding-top: 40px; /* space for close button */
 }
 
-.modal-box img {
+/* CLOSE BUTTON (OUTSIDE IMAGE) */
+.close-btn {
+  position: absolute;
+  top: -15px;   /* move OUTSIDE the image */
+  right: -15px;
+
+  background: #fff;
+  border-radius: 50%;
+  padding: 6px 10px;
+
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+
+  z-index: 1000;   /* ✅ VERY IMPORTANT */
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+/* IMAGE AREA */
+.modal-content img {
   width: 100%;
-  border-radius: 12px;
+  height: 300px;
+  object-fit: cover;
 }
 
-.progress-bar {
-  height: 6px;
-  background: #eee;
-  border-radius: 10px;
-  margin-top: 10px;
-  overflow: hidden;
-}
-
-.progress {
-  height: 100%;
-  background: #000;
-  transition: width 0.05s linear;
+/* CONTROLS */
+.modal-controls {
+  padding: 10px;
 }

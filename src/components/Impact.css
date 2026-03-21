@@ -1,18 +1,26 @@
 /* SECTION STYLING */
 .impact-section {
-  width:100%; /* Full width */
-  background-color: #187bff; /* Blue background */
+  width: 97vw;
+  margin-left: calc(50% - 50vw); /* breaks out of container */
+  transform: translateX(-10px);
+  background-color: #187bff;
   color: #fff;
   text-align: center;
-  /* More vertical padding for impact */
-  box-sizing: border-box; /* Include padding in width */
-  margin-bottom: 50px;
-  border-radius: 10px;
+  
+  box-sizing: border-box;
+  border-radius: 10px; 
+  margin-bottom: 50px; 
+   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);         /* remove if you want edge-to-edge */
 }
+  
 
-.impact-heading {
-  font-size: 1.5rem;
+
+.impacts-heading  {
+  
   margin-bottom: 50px;
+  margin-top: 10px;
+ 
+ 
   
 }
 
@@ -31,7 +39,7 @@
 
 .impact-value {
   font-size: 2rem;
-  font-weight: 700;
+  
   margin-bottom: 10px;
 }
 

@@ -264,10 +264,10 @@
 
 /* BUTTON */
 .download-btn {
-  background: #ff9800;
-  color: #fff;
+  background: #ff9800 !important;
+  color: #fff !important;
   border: none;
-  padding: 13px 28px;
+  padding: 13px 28px !important;
   border-radius: 10px;
   font-size: 15px;
   cursor: pointer;
@@ -275,9 +275,32 @@
 }
 
 .download-btn:hover {
-  color: #e68900;
+  background-color: #ba802a !important;
+}
+.btn-group {
+  display: flex;
+  flex-direction: row; /* same line */
+  gap: 15px; /* space between buttons */
+  justify-content: center;
+  margin-top: 15px;
 }
 
+.download-btn,
+.home-btn {
+  padding: 10px 18px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  color: #fff;
+}
+
+.download-btn {
+  background: #28a745;
+}
+
+.home-btn {
+  background: #081c3a;
+}
 /* ================= MOBILE ================= */
 @media (max-width: 768px) {
   .payment-modal-content {

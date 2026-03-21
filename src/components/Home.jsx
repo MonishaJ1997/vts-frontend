@@ -6,7 +6,7 @@ import { FaCalendarAlt } from "react-icons/fa";
 import { MdSchool } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 import EnrollModal from "./EnrollModal";
-
+import { FaArrowUpRightFromSquare } from "react-icons/fa6";
 
 
 
@@ -133,58 +133,53 @@ useEffect(() => {
 
 
 
-
-
-
-useEffect(() => {
-  if (!modalOpen || !selectedStory?.images?.length) return;
-
-  const interval = setInterval(() => {
-    setCurrentIndex((prev) => {
-      const nextIndex = prev + 1;
-
-      if (nextIndex >= selectedStory.images.length) {
-        return 0;
-      }
-
-      return nextIndex;
-    });
-  }, 2000);
-
-  return () => clearInterval(interval);
-}, [modalOpen, selectedStory]);
-
 useEffect(() => {
   if (!modalOpen || !isPlaying) return;
 
-  setProgress(0);
-
   const interval = setInterval(() => {
     setProgress((prev) => {
-      if (prev >= 100) return 0;
+      if (prev >= 100) {
+        setIsPlaying(false); // ✅ stop at end
+        return 100;
+      }
       return prev + 1;
     });
-  }, 100); // 10 sec total
+  }, 100); // 10 seconds total
 
   return () => clearInterval(interval);
-}, [modalOpen,isPlaying]);
+}, [modalOpen, isPlaying]);
+
+useEffect(() => {
+  let interval;
+
+  if (modalOpen && isPlaying) {
+    interval = setInterval(() => {
+      setProgress((prev) => {
+        if (prev >= 100) {
+          clearInterval(interval);
+          setIsPlaying(false);
+          return 100;
+        }
+        return prev + 1;
+      });
+    }, 100); // total 10 sec
+  }
+
+  return () => clearInterval(interval);
+}, [modalOpen, isPlaying]);
+
+
+
 const getCurrentImageIndex = () => {
   if (!selectedStory?.images?.length) return 0;
 
-  if (progress <= 40) return 0;      // 0–30%
-  if (progress <= 80) return 1;      // 30–60%
-  return 1;                          // 60–100%
+  const total = selectedStory.images.length;
+  const index = Math.floor((progress / 100) * total);
+
+  return Math.min(index, total - 1);
 };
 
-const nextSlide = () => {
-  setCurrentIndex((prev) => {
-    if (prev === successStories.length - 1) {
-      setIsPlaying(false); // stop at last
-      return prev;
-    }
-    return prev + 1;
-  });
-};
+
 
   // ================== FETCH DATA ==================
   useEffect(() => {
@@ -234,7 +229,7 @@ axios
       })
       .catch((err) => console.log(err));
 
-axios.get("http://127.0.0.1:8000/api/storyrole/")
+axios.get(`${BASE_URL}/api/storyrole/`)
     .then(res => {
       console.log("DATA:", res.data);
       setStoryRoles(res.data);
@@ -460,7 +455,7 @@ if (!hero || !about || !whyChoose || !howSection) {
 
 
 
-      {/* ================= HOW IT WORKS ========= */}
+      {/* ================= HOW IT WORKS ========= 
       <section className="how-wrapper container py-5">
         <h2 className="main-title">{howSection.title}</h2>
         <p className="sub-title">{howSection.subtitle}</p>
@@ -480,17 +475,69 @@ if (!hero || !about || !whyChoose || !howSection) {
             </div>
           ))}
         </div>
-      </section>
+      </section>*/}
 
 
+    <section className="how-wrapper container py-5">
 
+      {/* TITLE */}
+      <h2 className="main-title">{howSection?.title}</h2>
+      <p className="sub-title">{howSection?.subtitle}</p>
 
+      {/* TOP LINE */}
+     
 
+      {/* BOY IMAGE */}
+      <img
+        src={howSection?.student_image || boyImg}
+        alt="student"
+        className="student-img"
+      />
 
+      {/* FLOW WRAPPER */}
+      <div className="flow-wrapper">
 
+        {/* FRAME LINES */}
+        <div className="frame-line frame-top"></div>
+        <div className="frame-line frame-bottom"></div>
+        <div className="frame-line frame-left"></div>
+        <div className="frame-line frame-right"></div>
 
+        {/* THICK CORNERS */}
+        <div className="corners corner-tl"></div>
+        <div className="corners corner-tr"></div>
+        <div className="corner corner-bl"></div>
+        <div className="corner corner-br"></div>
 
+        {/* CARDS */}
+        <div className="row g-4 mt-4">
+          {howSteps?.map((step) => (
+            <div
+              className="col-xl-3 col-lg-6 col-md-6 col-12 step-col"
+              key={step.id}
+            >
+              <div
+                className="step-card"
+                style={{ background: step.card_bg_color }}
+              >
+                {step.icon_image && (
+                  <img src={step.icon_image} alt="" className="step-icon" />
+                )}
 
+                <div className="step-number">
+                  {step.step_number}
+                </div>
+
+                <h5>{step.title}</h5>
+                <p>{step.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+      </div>
+    </section>
+  
       {/* ================= FEATURED COURSES ================= */}
       <section className="featured-wrapper container py-5">
         <h2 className="featured-title">Featured Courses</h2>
@@ -546,7 +593,7 @@ if (!hero || !about || !whyChoose || !howSection) {
        <div className="button-container">
   <button className="btn-outline-custom"
   onClick={() => navigate("/courses")}
-  >View Details</button>
+  >View All Courses</button>
 </div>
 
       {/* ================= STUDENT PROJECTS ================= */}
@@ -565,63 +612,66 @@ if (!hero || !about || !whyChoose || !howSection) {
     <div className="fixed-carousel">
 
       {/* LEFT CARD */}
-      <div
-        className="carousel-card left"
-        onClick={() =>
-          setCenterIndex(
-            (centerIndex - 1 + projects.length) % projects.length
-          )
-        }
-      >
-        <img
-          src={`${BASE_URL}${
-            projects[(centerIndex - 1 + projects.length) % projects.length]
-              .image
-          }`}
-          alt=""
-        />
-        <div className="project-info">
-          <h5>
-            {
-              projects[
-                (centerIndex - 1 + projects.length) % projects.length
-              ].title
-            }
-          </h5>
-          <span className="student-role">
-            {
-              projects[
-                (centerIndex - 1 + projects.length) % projects.length
-              ].category
-            }
-          </span>
-          <p className="student-name">
-            {
-              projects[
-                (centerIndex - 1 + projects.length) % projects.length
-              ].student_name
-            }
-          </p>
-        </div>
-      </div>
+<div
+  className="carousel-card left"
+  onClick={() =>
+    setCenterIndex(
+      (centerIndex - 1 + projects.length) % projects.length
+    )
+  }
+>
+  <img
+    src={`${BASE_URL}${
+      projects[(centerIndex - 1 + projects.length) % projects.length].image
+    }`}
+    alt=""
+  />
 
+  {/* MOVE TEXT OUTSIDE IMAGE */}
+  <div className="project-info outside">
+    <div className="top-row">
+    <h5>
+      {
+        projects[
+          (centerIndex - 1 + projects.length) % projects.length
+        ].title
+      }
+    </h5>
+    <span className="student-role">
+      {
+        projects[
+          (centerIndex - 1 + projects.length) % projects.length
+        ].category
+      }
+    </span>
+    </div>
+    <p className="student-names">
+    by  {
+        projects[
+          (centerIndex - 1 + projects.length) % projects.length
+        ].student_name
+      }
+    </p>
+  </div>
+</div>
       {/* CENTER CARD */}
       <div className="carousel-card center">
         <img
           src={`${BASE_URL}${projects[centerIndex].image}`}
           alt=""
         />
-        <div className="project-info">
-          <div className="top-row">
-          <h5>{projects[centerIndex].title}</h5>
-          <span className="student-role">
-            {projects[centerIndex].category}
-          </span>
-          <p className="student-name">
-            {projects[centerIndex].student_name}
-          </p>
-          </div>
-        </div>
+       <div className="project-info">
+  <div className="top-row">
+    <h5>{projects[centerIndex].title}</h5>
+    <span className="student-roles">
+      {projects[centerIndex].category}
+    </span>
+  </div>
+
+  <p className="student-name">
+   by {projects[centerIndex].student_name}
+  </p>
+</div>
       </div>
 
       {/* RIGHT CARD */}
@@ -640,20 +690,27 @@ if (!hero || !about || !whyChoose || !howSection) {
           alt=""
         />
         <div className="project-info">
+          <div className="top-row">
           <h5>
             {projects[(centerIndex + 1) % projects.length].title}
           </h5>
           <span className="student-role">
             {projects[(centerIndex + 1) % projects.length].category}
           </span>
-          <p className="student-name">
-            {projects[(centerIndex + 1) % projects.length].student_name}
+          </div>
+          <p className="student-names  ">
+          by  {projects[(centerIndex + 1) % projects.length].student_name}
           </p>
         </div>
       </div>
 
     </div>
-    <button className="showcase-btn"onClick={() => navigate("/about")}> View Showcase</button>
+   <button className="showcase-btn" onClick={() => navigate("/about")}>
+  View Showcase
+  
+    <FaArrowUpRightFromSquare />
+
+</button>
   </section>
 )
 }
@@ -689,9 +746,12 @@ if (!hero || !about || !whyChoose || !howSection) {
 
 
 {/* ================= SUCCESS STORIES ================= */}
+{/* ================= SUCCESS STORIES ================= */}
 {successStories.length > 0 && (
   <section className="container py-5 success-section">
-    <h4 className="mb-2 fw-semibold">Stories from Our Successful Learners</h4>
+    <h4 className="mb-2 fw-semibold">
+      Stories from Our Successful Learners
+    </h4>
     <p className="text">
       Real stories from real students who transformed their careers
     </p>
@@ -707,77 +767,63 @@ if (!hero || !about || !whyChoose || !howSection) {
           <div
             key={story.id}
             className="success-card"
-            onClick={() => handleClick(index - startIndex)}
+            onClick={() => openModal(story)}
           >
             <img src={story.image} alt={story.name} />
 
-            {/* ▶ Video Icon */}
-<div
-  className="play-icon"
-  onClick={(e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    console.log("CLICK WORKING"); // debug
-    openModal(story,index);
-  }}
->
-  ▶
-</div>
-            {/* Overlay */}    
+            {/* ▶ Optional */}
+            <div
+              className="play-icon"
+              onClick={(e) => {
+                e.stopPropagation();
+                openModal(story);
+              }}
+            >
+              ▶
+            </div>
+
+            {/* Overlay */}
             <div className="success-overlay">
               <h6>{story.name}</h6>
               <p>{story.role}</p>
             </div>
           </div>
-  ))}
-            </div>
-          </div>
-
-      
-      
-
-
-
-
-        
-    
-           
-     </section>
+        ))}
+      </div>
+    </div>
+  </section>
 )}
-
 
 
 {modalOpen && (
   <div className="modal-overlay">
     <div className="modal-box">
-      
-      {/* Close */}
+
+      {/* CLOSE BUTTON OUTSIDE IMAGE */}
       <span className="close-btn" onClick={closeModal}>✕</span>
- {selectedStory.images?.length > 0 ? (
-        <img
-          src={selectedStory.images[currentIndex]?.image}
-          alt="story"
-          style={{ width: "100%" }}
-        />
-      ) : (
-        <p>No images available</p>
-      )}
 
-      {/* Image *
- <img
-  src={selectedStory?.image}
-  alt={selectedStory?.name}
-  onError={(e) => {
-    console.log("IMAGE ERROR:", selectedStory?.image);
-    e.target.style.display = "none";
-  }}
-/>*/}
+      {/* IMAGE WRAPPER */}
+      <div className="modal-content">
+        {selectedStory.images?.length > 0 ? (
+          <img
+            src={selectedStory.images[getCurrentImageIndex()]?.image}
+            alt="story"
+          />
+        ) : (
+          <p>No images available</p>
+        )}
+      </div>
 
-      {/* Bottom Controls */}
+      {/* CONTROLS */}
       <div className="modal-controls">
         <button
           className="play-btn"
-          onClick={() => setIsPlaying(!isPlaying)}
+          onClick={() => {
+            if (!isPlaying && progress === 100) {
+              setProgress(0);
+            }
+            setIsPlaying(!isPlaying);
+          }}
         >
           {isPlaying ? "⏸" : "▶"}
         </button>
@@ -789,10 +835,10 @@ if (!hero || !about || !whyChoose || !howSection) {
           ></div>
         </div>
       </div>
+
     </div>
   </div>
 )}
-
 
 
 

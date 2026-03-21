@@ -11,7 +11,7 @@ const Impact = () => {
 
   return (
     <section className="impact-section">
-      <h2 className="impact-heading">Our Impact</h2>
+      <h2 className="impacts-heading">Our Impact</h2>
       <div className="impact-container">
         {impactData.map((item, index) => (
           <div key={index} className="impact-card">

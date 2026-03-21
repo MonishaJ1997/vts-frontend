@@ -30,9 +30,6 @@
 
 .icon {
   margin-right: 5px !important;
-}
-
-.icon  {
   color: #EF1400 !important;
 }
 
@@ -48,7 +45,7 @@
   padding: 12px;
   font-size: 22px;
   font-weight: 600;
-  margin-bottom: 30px; /* white space below */
+  margin-bottom: 30px;
 }
 
 /* ================== Navbar ================== */
@@ -58,11 +55,11 @@
   justify-content: center;
   align-items: center;
   position: relative;
-  height: 60px; /* desktop height */
+  height: 60px;
   padding: 0 10px;
+  z-index: 200;
 }
 
-/* Inner wrapper for desktop layout */
 .navbar-container {
   display: flex;
   justify-content: space-between;
@@ -72,12 +69,11 @@
   height: 60px;
 }
 
-/* Nav Left: Logo + Search */
+/* Nav Left */
 .nav-left {
   display: flex;
   align-items: center;
   gap: 15px;
-  height: 60px;
 }
 
 /* Logo */
@@ -87,10 +83,10 @@
   border-radius: 50%;
   border: 1px solid #43A047;
   position: relative;
-  top: -12px; /* slightly upward inside 60px navbar */
+  top: -12px;
 }
 
-/* Search bar */
+/* Search */
 .search-box {
   background: white;
   padding: 4px 12px;
@@ -107,7 +103,7 @@
   width: 100%;
   margin-left: 8px;
   font-size: 14px;
-   background: transparent;
+  background: transparent;
 }
 
 .search-icon {
@@ -115,16 +111,14 @@
   font-size: 16px;
 }
 
-/* Nav Right: Links + Enroll */
+/* Nav Right */
 .nav-right {
   display: flex;
   align-items: center;
   gap: 85px;
-  height: 60px;
-  justify-content: flex-start; /* left align */
 }
 
-/* Nav links */
+/* Nav Links */
 .nav-links {
   display: flex;
   list-style: none;
@@ -142,15 +136,14 @@
 
 .nav-links li a.active {
   color: #FF9C00;
-  text-decoration: none;
 }
 
 .nav-links li a:hover {
   color: #FF9C00;
 }
 
-/* Enroll button */
-.enroll-btn {
+/* Enquiry Button */
+.enroll-btns {
   background: #FF9C00;
   border: none;
   padding: 11px 30px !important;
@@ -159,14 +152,13 @@
   cursor: pointer;
   color: white;
   transition: 0.3s;
- 
 }
 
-.enroll-btn:hover {
-  background: #da9931;
+.enroll-btns:hover {
+  background: #b17e2c;
 }
 
-/* Hamburger Toggle */
+/* Toggle */
 .menu-toggler {
   display: none;
   font-size: 1.6rem;
@@ -175,176 +167,12 @@
   z-index: 200;
 }
 
-/* ================== Responsive ================== *
-@media (max-width: 768px) {
-  .navbar {
-    height: 150px; /* increased height for mobile *
-  }
+/* ================== MOBILE ================== */
 
-  .navbar-container {
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-    height: auto;
-  }
+/* Topbar Mobile Fix */
 
-  .nav-left {
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    gap: 5px;
-  }
-
-  .search-box {
-    width: 90%;
-    order: 2;
-  }
-
-  /* Hamburger toggle always visible above dropdown *
-  .menu-toggler {
-    display: block;
-    order: 3;
-    margin-top: 5px;
-    position: relative;
-  }
-
-  .nav-right {
-    position: absolute;
-    top: 100%;
-    left: 0; /* align dropdown to left *
-    width: 100%;
-    flex-direction: column;
-    background: #fff;
-    display: none;
-    padding: 10px 0;
-    border-top: 1px solid #ddd;
-    z-index: 150;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  }
-
-  .nav-right.active {
-    display: flex;
-  }
-
-  .nav-links {
-    flex-direction: column;
-    width: 100%;
-    text-align: left;
-    gap: 0;
-    padding-left: 20px;
-  }
-
-  .nav-links li a {
-    color: #333;
-    text-decoration: none;
-  }
-
-  .nav-links li a.active {
-    color: #FF9C00;
-  }
-
-  .nav-links li {
-    padding: 8px 0;
-    border-bottom: 1px solid #ddd;
-    background: white;
-  }
-
-  .enroll-btn {
-    width: 90%;
-    margin: 8px auto 0;
-    text-align: center;
-  }
-}
-
-*/
-
-/* ================== Responsive Navbar for Mobile ================== */
-/* ================== Mobile Responsive Navbar ================== */
-@media (max-width: 997px) {
-  .navbar {
-    height: 60px; /* keep compact */
-    padding: 5px 10px;
-  }
-
-  .navbar-container {
-    display: flex;
-    justify-content: space-between; /* spread logo, search, toggler */
-    align-items: center;
-    width: 100%;
-  }
-
-  /* Logo */
-  .logo img {
-    width: 50px;
-    height: 50px;
-    top: 0;
-  }
-
-  /* Search box */
-  .search-box {
-    width: 60%; /* adjust as needed */
-    order: 2;
-  }
-
-  /* Hamburger toggler */
-  .menu-toggler {
-    display: block;
-    order: 3;
-    font-size: 1.6rem;
-    cursor: pointer;
-    color: white;
-  }
-
-  /* Nav menu hidden by default */
-  .nav-right {
-    position: absolute;
-    top: 60px; /* below navbar */
-    left: 0;
-    width: 100%;
-    flex-direction: column;
-    background-color:white;
-    display: none; /* hidden until toggler click */
-    padding: 10px 0;
-    border-top: 1px solid #ddd;
-    z-index: 150;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-  }
-
-  /* Show nav when toggler clicked */
-  .nav-right.active {
-    display: flex;
-  }
-
-  .nav-links {
-    flex-direction: column;
-    width: 100%;
-    padding-left: 20px;
-    gap: 0;
-  }
-
-  .nav-links li {
-    padding: 10px 0;
-    border-bottom: 1px solid #ddd;
-    width: 100%;
-    background-color: white;
-  }
-
-  .nav-links li a {
-    color: #333;
-    font-size: 16px;
-    text-decoration: none;
-  }
-
-  .nav-links li a.active {
-    color: #FF9C00;
-  }
-
-  .enroll-btn {
-    display: none;
-}
-}
-@media (max-width: 768px) {
-  .top-bar {
+  @media (max-width: 767px) {
+.top-bar {
     flex-direction: column;      /* stack content vertically */
     align-items: center;         /* center items */
     padding: 8px 15px;           /* reduce padding */
@@ -373,5 +201,95 @@
 
   .phone-icon {
     margin-left: 0;              /* remove extra margin on mobile */
+  }
+}
+/* Navbar Mobile */
+@media (max-width: 767px) {
+
+  .navbar-container {
+    padding: 0 15px;
+  }
+
+  .logo img {
+    width: 60px;
+    height: 60px;
+    top: 0;
+  }
+
+  .menu-toggler {
+    display: block;
+  }
+
+  .search-box {
+    display: none;
+  }
+
+  .nav-right {
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    background: #fff;
+    flex-direction: column;
+    display: none;
+    padding: 10px 0;
+    z-index: 999;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  }
+
+  .nav-right.active {
+    display: flex;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    width: 100%;
+    gap: 0;
+  }
+
+  .nav-links li {
+    width: 100%;
+    padding: 12px 20px;
+    border-bottom: 1px solid #eee;
+  }
+
+  .nav-links li a {
+    color: #333;
+    font-size: 16px;
+    display: block;
+    width: 100%;
+  }
+
+  /* Enquiry Button Fix */
+  .enroll-btns {
+    width: 90%;
+    margin: 10px auto;
+    display: block;
+    text-align: center;
+  }
+}
+
+/* ================== TABLET ================== */
+@media (min-width: 768px) and (max-width: 990px) {
+
+  .menu-toggler {
+    display: none;
+  }
+
+  .nav-right {
+    display: flex !important;
+    gap: 25px;
+  }
+
+  .nav-links {
+    gap: 20px;
+  }
+
+  .nav-links li a {
+    font-size: 16px;
+  }
+
+  .search-box {
+    width: 250px;
   }
 }

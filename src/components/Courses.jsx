@@ -97,14 +97,23 @@ const course = { title: "React Course" };
                 <div className="course-buttons">
                   <button
                     className="btn-outline-custom"
-                    onClick={() => navigate(`/course/${course.id}`)} // ✅ Works now
-                  >
-                    View Details
-                  </button>
-                  <button className="btn-primary-custom"
-                  onClick={() => setShowModal(true)}>
-                    Enroll Now
-                  </button>
+                   onClick={(e) => {
+    e.stopPropagation(); // ✅ stop parent click
+    navigate(`/course/${course.id}`);
+  }}
+>
+  View Details
+</button>
+                  
+       <button
+  className="btn-primary-custom"
+  onClick={(e) => {
+    e.stopPropagation(); // ✅ stop navigation
+    setShowModal(true);
+  }}
+>
+  Enroll Now
+</button>          
                 </div>
 
               </div>
