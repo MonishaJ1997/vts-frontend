@@ -363,7 +363,7 @@ const validateField = (name, value) => {
 )}
 
         {/* ================= STEP 3 ================= */}
-        {step === 3 && <PaymentStep formData={formData} />}
+        {step === 3 && <PaymentStep formData={formData} onClose={onClose}  />}
 
       </div>
     </div>
