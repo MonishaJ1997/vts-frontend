@@ -299,3 +299,52 @@ textarea:focus {
 .row-item span:nth-child(2) {
   text-align: center;
 }
+
+/* ================= STEP 2 MOBILE FIX ================= */
+@media (max-width: 992px) {
+
+  .confirm-wrapper {
+    flex-direction: column;   /* 🔥 stack left & right */
+    gap: 20px;
+    padding: 20px;
+  }
+
+  .confirm-grid {
+    width: 100%;
+  }
+
+  .row-item {
+    grid-template-columns: 120px 10px 1fr; /* adjust spacing */
+    font-size: 14px;
+  }
+
+}
+
+@media (max-width: 768px) {
+
+  .confirm-wrapper {
+    padding: 15px;          /* reduce box padding */
+  }
+
+  .confirm-title {
+    font-size: 18px;        /* smaller heading */
+  }
+
+  .row-item {
+    grid-template-columns: 90px 8px 1fr; /* smaller columns */
+    font-size: 13px;        /* 🔥 shrink text */
+    gap: 2px;
+  }
+
+  .row-item span:first-child {
+    font-weight: 500;
+    font-size: 13px;
+  }
+
+  .row-item span:last-child {
+    font-weight: 500;
+    font-size: 13px;
+    word-break: break-word; /* 🔥 prevent overflow */
+  }
+
+}
