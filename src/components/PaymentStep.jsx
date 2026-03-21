@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./PaymentStep.css";
@@ -6,7 +7,7 @@ import html2pdf from "html2pdf.js/dist/html2pdf.bundle";
 
 const BASE_URL = "https://vts-backend-wky4.onrender.com";
 
-const PaymentStep = ({ formData }) => {
+const PaymentStep = ({ formData,onClose }) => {
   const [methods, setMethods] = useState([]);
   const [selected, setSelected] = useState("");
   const [upi, setUpi] = useState("");
@@ -21,7 +22,11 @@ const PaymentStep = ({ formData }) => {
       .then((res) => setMethods(res.data))
       .catch(() => {});
   }, []);
-
+useEffect(() => {
+  return () => {
+    setShowSuccess(false);
+  };
+}, []);
   // Group methods
   const grouped = methods.reduce((acc, item) => {
     acc[item.method_type] = acc[item.method_type] || [];
@@ -223,10 +228,13 @@ const PaymentStep = ({ formData }) => {
 
   <button
     className="home-btn"
-    onClick={() => {
-      setShowSuccess(false);
-      navigate("/");
-    }}
+   onClick={() => {
+  setShowSuccess(false);   // ✅ reset popup
+  setSelected("");         // optional reset
+  setUpi("");
+   onClose();               // optional reset
+  navigate("/");
+}}
   >
     Back to Home
   </button>
