@@ -328,3 +328,17 @@
     width: 100%;
   }
 }
+@media (max-width: 768px) {
+
+  .btn-group {
+    flex-direction: column;   /* 🔥 stack buttons */
+    gap: 12px;
+    width: 100%;
+  }
+
+  .btn-group button {
+    width: 100%;              /* full width buttons */
+    text-align: center;
+  }
+
+}
