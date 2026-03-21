@@ -308,3 +308,25 @@
 
   z-index: -1;   /* hidden behind UI */
 }
+
+
+@media (max-width: 992px) {
+  .featured-header {
+    flex-direction: column;
+    display: flex;
+    gap: 15px;
+  }
+
+  .featured-title {
+    font-size: 20px;
+    line-height: 1.3;
+    text-align: center;
+  }
+
+  .consult-btn {
+    width: 50%;
+    text-align: center;
+    padding: 10px;
+    display: none;
+  }
+}
