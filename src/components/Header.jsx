@@ -8,7 +8,7 @@ import EnrollModal from "./EnrollModal";
 
 // adjust path if it's in another folder
 const Header = () => {
-  const BASE_URL = "http://127.0.0.1:8000";
+  const BASE_URL = "https://vts-backend-wky4.onrender.com";
   const [logo, setLogo] = useState("");
   const [menuOpen, setMenuOpen] = useState(false);
 
