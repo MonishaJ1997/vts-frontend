@@ -556,3 +556,41 @@ button,
 a {
   text-decoration: none !important;
 }
+
+
+.featured-header {
+  display: flex;
+  justify-content: center; /* ✅ center title */
+  align-items: center;
+  position: relative;
+  margin-bottom: 40px;
+}
+
+.featured-heading {
+  text-align: center;
+}
+
+.featured-title {
+  font-size: 32px;
+  font-weight: 600;
+  margin: 0;
+  text-align: center;
+}
+.consult-btn {
+  position: absolute;
+  right: 0;
+  background: #f9a825;
+  color: #fff;
+  border: none;
+  padding: 10px 25px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+}
+.filter-tabs {
+  display: flex;
+  justify-content: flex-start; /* ✅ left align */
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
