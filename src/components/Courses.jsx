@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 import EnrollModal from "./EnrollModal";
 const Courses = () => {
 
-  const BASE_URL = "http://127.0.0.1:8000";
+  const BASE_URL = "https://vts-backend-wky4.onrender.com";
 
   const [courses, setCourses] = useState([]);
   const [activeCategory, setActiveCategory] = useState("All");
